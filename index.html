@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VALTIP4 — Advancing Enhanced Wood Manufacturing Industries in Laos and Australia</title>
+<meta name="description" content="Value-Adding to Lao Plantation Timber Products Phase 4. Sustainable expansion of forestry and wood processing in Laos and Australia. Funded by ACIAR.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --brown-50:#fdf8f1;--brown-100:#f5e6d3;--brown-200:#e8caa8;
+  --brown-300:#d4a574;--brown-400:#c08a4e;--brown-500:#a16f3a;
+  --brown-600:#8b5e34;--brown-700:#6d4a2a;--brown-800:#4a3320;
+  --brown-900:#2d1f14;
+  --gold:#c9a84c;--gold-light:#e0c96e;
+  --cream:#faf6f0;--white:#ffffff;
+  --text:#2d1f14;--text-light:#6d4a2a;--text-muted:#8b7355;
+  --green-accent:#4a7c59;--green-light:#e8f0ea;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--cream);overflow-x:hidden;line-height:1.6}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;line-height:1.2}
+
+/* Utility */
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.section{padding:100px 0}
+.section-label{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--brown-500);margin-bottom:12px;position:relative;padding-left:40px}
+.section-label::before{content:'';position:absolute;left:0;top:50%;width:28px;height:2px;background:var(--gold);transform:translateY(-50%)}
+.section-title{font-size:clamp(2rem,4vw,3rem);color:var(--brown-900);margin-bottom:20px}
+.section-subtitle{font-size:1.1rem;color:var(--text-muted);max-width:600px;line-height:1.7}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;font-weight:600;font-size:.95rem;text-decoration:none;transition:all .3s ease;cursor:pointer;border:none;font-family:'Inter',sans-serif}
+.btn-primary{background:var(--brown-600);color:var(--white)}
+.btn-primary:hover{background:var(--brown-700);transform:translateY(-2px);box-shadow:0 8px 25px rgba(139,94,52,.3)}
+.btn-outline{background:transparent;color:var(--brown-700);border:2px solid var(--brown-300)}
+.btn-outline:hover{background:var(--brown-700);color:var(--white);transform:translateY(-2px)}
+.btn-white{background:var(--white);color:var(--brown-700)}
+.btn-white:hover{background:var(--brown-100);transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.15)}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 0;transition:all .4s ease}
+.nav.scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);box-shadow:0 2px 30px rgba(45,31,20,.08);padding:10px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo svg{width:40px;height:40px}
+.nav-logo span{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--brown-800)}
+.nav-logo .phase{font-size:.7rem;font-weight:600;color:var(--gold);letter-spacing:2px;display:block;margin-top:-4px}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{text-decoration:none;font-size:.9rem;font-weight:500;color:var(--brown-700);transition:color .3s}
+.nav-links a:hover{color:var(--brown-500)}
+.nav-cta{padding:10px 24px!important;font-size:.85rem!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
+.hamburger span{width:24px;height:2px;background:var(--brown-700);transition:all .3s}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--brown-900) 0%,var(--brown-700) 50%,var(--brown-600) 100%)}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero-content{position:relative;z-index:2;color:var(--white);max-width:700px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);backdrop-filter:blur(10px);padding:8px 20px;border-radius:50px;font-size:.8rem;font-weight:500;color:var(--brown-100);margin-bottom:28px;border:1px solid rgba(255,255,255,.15)}
+.hero-badge svg{width:16px;height:16px;fill:var(--gold)}
+.hero h1{font-size:clamp(2.5rem,5.5vw,4.2rem);margin-bottom:24px;line-height:1.1}
+.hero h1 em{font-style:normal;color:var(--gold-light)}
+.hero p{font-size:1.15rem;color:rgba(255,255,255,.8);line-height:1.8;margin-bottom:40px;max-width:560px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:48px;margin-top:60px;padding-top:40px;border-top:1px solid rgba(255,255,255,.15)}
+.hero-stat .number{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--gold-light)}
+.hero-stat .label{font-size:.85rem;color:rgba(255,255,255,.6);margin-top:4px}
+.hero-visual{position:absolute;right:-50px;top:50%;transform:translateY(-50%);width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.15) 0%,transparent 70%);pointer-events:none}
+.hero-visual::after{content:'';position:absolute;width:300px;height:300px;border-radius:50%;border:1px solid rgba(201,168,76,.1);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:1}50%{transform:translate(-50%,-50%) scale(1.2);opacity:.5}}
+.leaf-icon{position:absolute;opacity:.06;pointer-events:none}
+.leaf-icon:nth-child(1){top:15%;right:20%;width:120px;transform:rotate(25deg)}
+.leaf-icon:nth-child(2){bottom:20%;right:35%;width:80px;transform:rotate(-15deg)}
+
+/* OVERVIEW */
+.overview{background:var(--white)}
+.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:48px}
+.overview-image{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/3;background:linear-gradient(135deg,var(--brown-200),var(--brown-400))}
+.overview-image-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:40px}
+.overview-image-inner svg{width:80%;opacity:.5}
+.overview-image .floating-card{position:absolute;background:var(--white);border-radius:14px;padding:16px 20px;box-shadow:0 10px 40px rgba(45,31,20,.12);display:flex;align-items:center;gap:12px}
+.floating-card.top{top:20px;right:-20px}
+.floating-card.bottom{bottom:20px;left:-20px}
+.floating-card .fc-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.floating-card .fc-icon svg{width:20px;height:20px}
+.floating-card .fc-text{font-size:.8rem;font-weight:600;color:var(--brown-800)}
+.floating-card .fc-sub{font-size:.7rem;color:var(--text-muted)}
+.overview-text h3{font-size:1.6rem;color:var(--brown-800);margin-bottom:16px}
+.overview-text p{color:var(--text-muted);margin-bottom:20px;line-height:1.8}
+.overview-highlights{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.highlight-item{display:flex;align-items:flex-start;gap:12px;padding:16px;border-radius:12px;background:var(--brown-50);transition:all .3s}
+.highlight-item:hover{background:var(--brown-100);transform:translateY(-2px)}
+.highlight-item .hi-icon{width:36px;height:36px;border-radius:8px;background:var(--brown-600);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.highlight-item .hi-icon svg{width:18px;height:18px;fill:var(--white)}
+.highlight-item .hi-text{font-size:.85rem;font-weight:600;color:var(--brown-800)}
+.highlight-item .hi-desc{font-size:.75rem;color:var(--text-muted);margin-top:2px}
+
+/* OBJECTIVES */
+.objectives{background:var(--cream)}
+.obj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px}
+.obj-card{background:var(--white);border-radius:20px;padding:36px;transition:all .4s ease;border:1px solid rgba(139,94,52,.08);position:relative;overflow:hidden}
+.obj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--brown-500),var(--gold));opacity:0;transition:opacity .3s}
+.obj-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(45,31,20,.1)}
+.obj-card:hover::before{opacity:1}
+.obj-number{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--brown-100);margin-bottom:16px}
+.obj-card h3{font-size:1.15rem;color:var(--brown-800);margin-bottom:12px}
+.obj-card p{font-size:.9rem;color:var(--text-muted);line-height:1.7}
+
+/* ACTIVITIES */
+.activities{background:var(--white)}
+.act-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.act-card{border-radius:18px;padding:32px;position:relative;overflow:hidden;transition:all .4s}
+.act-card:hover{transform:translateY(-4px)}
+.act-card:nth-child(1){background:linear-gradient(135deg,#f5e6d3,#e8caa8)}
+.act-card:nth-child(2){background:linear-gradient(135deg,#e8f0ea,#c8dece)}
+.act-card:nth-child(3){background:linear-gradient(135deg,#f0e8dc,#ddd0bc)}
+.act-card:nth-child(4){background:linear-gradient(135deg,#e6e0f5,#d0c8e8)}
+.act-card:nth-child(5){background:linear-gradient(135deg,#fce8d5,#f0d0b0)}
+.act-card:nth-child(6){background:linear-gradient(135deg,#d5e8e8,#b8d4d4)}
+.act-icon{width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.act-icon svg{width:24px;height:24px}
+.act-card h3{font-size:1.05rem;color:var(--brown-900);margin-bottom:10px}
+.act-card p{font-size:.85rem;color:var(--text-light);line-height:1.7}
+
+/* TIMEFRAME */
+.timeframe{background:linear-gradient(135deg,var(--brown-800),var(--brown-900));color:var(--white);position:relative;overflow:hidden}
+.timeframe::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.1),transparent);pointer-events:none}
+.timeframe .section-label{color:var(--gold)}
+.timeframe .section-title{color:var(--white)}
+.timeframe .section-subtitle{color:rgba(255,255,255,.6)}
+.tf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px}
+.tf-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px;text-align:center;transition:all .3s}
+.tf-card:hover{background:rgba(255,255,255,.1);transform:translateY(-4px)}
+.tf-card .tf-year{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--gold-light);margin-bottom:8px}
+.tf-card .tf-phase{font-size:.8rem;font-weight:600;color:var(--brown-200);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.tf-card p{font-size:.85rem;color:rgba(255,255,255,.6);line-height:1.6}
+
+/* TIMELINE */
+.timeline-section{background:var(--cream)}
+.timeline{max-width:800px;margin:48px auto 0;position:relative}
+.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--brown-200),var(--brown-500),var(--brown-200));transform:translateX(-50%)}
+.tl-item{display:flex;align-items:center;margin-bottom:40px;position:relative}
+.tl-item:nth-child(odd){flex-direction:row-reverse;text-align:right}
+.tl-item:nth-child(odd) .tl-content{padding-right:50px;padding-left:0}
+.tl-item:nth-child(even) .tl-content{padding-left:50px}
+.tl-dot{width:16px;height:16px;border-radius:50%;background:var(--brown-500);border:3px solid var(--cream);position:absolute;left:50%;transform:translateX(-50%);z-index:2;box-shadow:0 0 0 4px rgba(161,111,58,.2)}
+.tl-content{flex:1;max-width:calc(50% - 20px)}
+.tl-date{font-size:.8rem;font-weight:600;color:var(--brown-500);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.tl-content h4{font-size:1.05rem;color:var(--brown-800);margin-bottom:6px}
+.tl-content p{font-size:.85rem;color:var(--text-muted);line-height:1.6}
+
+/* TEAM */
+.team{background:var(--white)}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px}
+.team-card{text-align:center;padding:32px 20px;border-radius:18px;background:var(--cream);transition:all .4s;border:1px solid transparent}
+.team-card:hover{border-color:var(--brown-200);transform:translateY(-4px);box-shadow:0 15px 40px rgba(45,31,20,.08)}
+.team-avatar{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--brown-300),var(--brown-500));margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--white)}
+.team-card h4{font-size:1rem;color:var(--brown-800);margin-bottom:4px}
+.team-card .team-role{font-size:.8rem;color:var(--brown-500);font-weight:500;margin-bottom:4px}
+.team-card .team-org{font-size:.75rem;color:var(--text-muted)}
+
+/* PARTNERS */
+.partners{background:var(--cream)}
+.partner-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;margin-top:48px}
+.partner-group h3{font-size:1.1rem;color:var(--brown-800);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--brown-200)}
+.partner-list{display:flex;flex-direction:column;gap:12px}
+.partner-item{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--white);border-radius:12px;transition:all .3s;border:1px solid rgba(139,94,52,.06)}
+.partner-item:hover{border-color:var(--brown-200);transform:translateX(4px)}
+.partner-item .pi-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.partner-item .pi-icon svg{width:20px;height:20px}
+.pi-au{background:linear-gradient(135deg,#dce7f5,#b8cfe8)}
+.pi-la{background:linear-gradient(135deg,#e8ddd0,#d4c4b0)}
+.partner-item .pi-name{font-size:.9rem;font-weight:600;color:var(--brown-800)}
+.partner-item .pi-desc{font-size:.75rem;color:var(--text-muted)}
+
+/* IMPACT */
+.impact{background:var(--white)}
+.impact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:48px}
+.impact-card{padding:32px;border-radius:18px;border:1px solid rgba(139,94,52,.1);background:var(--cream);transition:all .3s;display:flex;gap:20px;align-items:flex-start}
+.impact-card:hover{border-color:var(--brown-300);transform:translateY(-3px);box-shadow:0 12px 35px rgba(45,31,20,.06)}
+.impact-icon{width:48px;height:48px;border-radius:12px;background:var(--brown-600);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.impact-icon svg{width:22px;height:22px;fill:var(--white)}
+.impact-card h4{font-size:1rem;color:var(--brown-800);margin-bottom:8px}
+.impact-card p{font-size:.85rem;color:var(--text-muted);line-height:1.7}
+
+/* GALLERY */
+.gallery{background:var(--cream)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.gallery-item{aspect-ratio:4/3;border-radius:16px;overflow:hidden;position:relative;cursor:pointer;background:linear-gradient(135deg,var(--brown-200),var(--brown-400))}
+.gallery-item:nth-child(1){grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(45,31,20,.5) 0%,transparent 50%);opacity:0;transition:opacity .3s}
+.gallery-item:hover::after{opacity:1}
+.gallery-item .gi-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:rgba(255,255,255,.4);font-size:.8rem}
+.gallery-item .gi-inner svg{width:40px;height:40px;opacity:.3}
+.gallery-caption{position:absolute;bottom:16px;left:16px;right:16px;color:var(--white);font-size:.85rem;font-weight:500;z-index:2;opacity:0;transform:translateY(10px);transition:all .3s}
+.gallery-item:hover .gallery-caption{opacity:1;transform:translateY(0)}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,var(--brown-700),var(--brown-900));color:var(--white);text-align:center;padding:100px 0;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2l2 3.5-2 3z' fill='%23ffffff' fill-opacity='.02'/%3E%3C/svg%3E")}
+.cta h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:16px;position:relative}
+.cta p{font-size:1.1rem;color:rgba(255,255,255,.7);margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto;position:relative}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative}
+
+/* CONTACT */
+.contact{background:var(--white)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:48px}
+.contact-info{display:flex;flex-direction:column;gap:24px}
+.ci-item{display:flex;gap:16px;align-items:flex-start}
+.ci-icon{width:48px;height:48px;border-radius:12px;background:var(--brown-50);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ci-icon svg{width:22px;height:22px;fill:var(--brown-600)}
+.ci-item h4{font-size:.95rem;color:var(--brown-800);margin-bottom:4px}
+.ci-item p,.ci-item a{font-size:.9rem;color:var(--text-muted);text-decoration:none;line-height:1.6}
+.ci-item a:hover{color:var(--brown-500)}
+.contact-form{background:var(--cream);border-radius:20px;padding:40px}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:.85rem;font-weight:500;color:var(--brown-700);margin-bottom:6px}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:14px 18px;border:1px solid var(--brown-200);border-radius:12px;font-size:.9rem;font-family:'Inter',sans-serif;color:var(--text);background:var(--white);transition:border-color .3s;outline:none}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--brown-500)}
+.form-group textarea{resize:vertical;min-height:120px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* FOOTER */
+.footer{background:var(--brown-900);color:rgba(255,255,255,.6);padding:60px 0 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand .nav-logo span{color:var(--white)}
+.footer-brand .nav-logo .phase{color:var(--gold)}
+.footer-brand p{font-size:.85rem;margin-top:16px;line-height:1.7;max-width:280px}
+.footer h4{color:var(--white);font-size:.9rem;margin-bottom:16px}
+.footer ul{list-style:none}
+.footer ul li{margin-bottom:10px}
+.footer ul a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem;transition:color .3s}
+.footer ul a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:.8rem}
+.footer-logos{display:flex;gap:24px;align-items:center}
+.footer-logos span{font-size:.75rem;opacity:.5}
+
+/* SCROLL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.25,.46,.45,.94)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.35s}
+.reveal-delay-5{transition-delay:.4s}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .overview-grid,.contact-grid{grid-template-columns:1fr}
+  .overview-image{max-width:500px}
+  .obj-grid,.act-grid{grid-template-columns:repeat(2,1fr)}
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .tf-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .section{padding:70px 0}
+  .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,.98);backdrop-filter:blur(20px);flex-direction:column;justify-content:center;align-items:center;gap:24px;z-index:999}
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:1.2rem}
+  .hamburger{display:flex;z-index:1001}
+  .hero-stats{flex-wrap:wrap;gap:24px}
+  .hero-stat{min-width:120px}
+  .obj-grid,.act-grid,.impact-grid{grid-template-columns:1fr}
+  .tf-grid{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .gallery-item:nth-child(1){grid-column:span 2}
+  .partner-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr 1fr}
+  .timeline::before{left:20px}
+  .tl-item,.tl-item:nth-child(odd){flex-direction:column;align-items:flex-start;padding-left:50px}
+  .tl-item:nth-child(odd) .tl-content,.tl-item:nth-child(even) .tl-content{padding:0;text-align:left;max-width:100%}
+  .tl-dot{left:20px}
+  .form-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:16px;text-align:center}
+}
+@media(max-width:480px){
+  .hero h1{font-size:2rem}
+  .hero-stats{gap:20px}
+  .hero-btns{flex-direction:column}
+  .tf-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+  .gallery-item:nth-child(1){grid-column:span 1}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="nav">
+<div class="container nav-inner">
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="40" height="40" rx="10" fill="#6d4a2a"/>
+      <path d="M12 28V12h4l4 10 4-10h4v16h-3V18l-3.5 8h-3L15 18v10h-3z" fill="#fff"/>
+    </svg>
+    <div><span>VALTIP</span><span class="phase">PHASE 4</span></div>
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#overview">Overview</a>
+    <a href="#objectives">Objectives</a>
+    <a href="#activities">Activities</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#team">Team</a>
+    <a href="#partners">Partners</a>
+    <a href="#impact">Impact</a>
+    <a href="#contact" class="btn btn-primary nav-cta">Contact Us</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-visual"></div>
+  <svg class="leaf-icon" viewBox="0 0 100 100" fill="white"><path d="M50 5C25 5 5 30 5 55c0 25 20 40 45 40 10 0 15-5 15-15C65 60 80 45 80 30 80 15 65 5 50 5z"/></svg>
+  <svg class="leaf-icon" viewBox="0 0 100 100" fill="white"><path d="M50 5C25 5 5 30 5 55c0 25 20 40 45 40 10 0 15-5 15-15C65 60 80 45 80 30 80 15 65 5 50 5z"/></svg>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="8"/></svg>
+        Funded by ACIAR &mdash; Australian Centre for International Agricultural Research
+      </div>
+      <h1>Advancing <em>Enhanced Wood</em> Manufacturing in Laos &amp; Australia</h1>
+      <p>VALTIP4 drives sustainable expansion of forestry and wood processing through research, capacity building, and technology transfer across Laos and Australia.</p>
+      <div class="hero-btns">
+        <a href="#overview" class="btn btn-white">Learn More <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 12l-4-4h8z"/></svg></a>
+        <a href="#contact" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.3)">Contact Us</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="number">4</div><div class="label">Project Phases</div></div>
+        <div class="hero-stat"><div class="number">5</div><div class="label">Year Duration</div></div>
+        <div class="hero-stat"><div class="number">A$3.1M</div><div class="label">Budget</div></div>
+        <div class="hero-stat"><div class="number">215K</div><div class="label">Hectares Planted</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="section overview" id="overview">
+<div class="container">
+  <div class="reveal"><span class="section-label">About the Project</span></div>
+  <h2 class="section-title reveal">Project Overview</h2>
+  <div class="overview-grid">
+    <div class="overview-image reveal">
+      <div class="overview-image-inner">
+        <svg viewBox="0 0 200 200" fill="rgba(255,255,255,.6)"><path d="M100 20c-10 0-18 8-18 20v50c-20 5-35 22-35 43 0 25 20 47 53 47s53-22 53-47c0-21-15-38-35-43V40c0-12-8-20-18-20zm0 15c3 0 5 2 5 5v55h-10V40c0-3 2-5 5-5z"/></svg>
+      </div>
+      <div class="floating-card top">
+        <div class="fc-icon" style="background:#e8f0ea"><svg fill="#4a7c59" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 11H9v-2h2v2zm0-4H9V5h2v4z"/></svg></div>
+        <div><div class="fc-text">Since 2007</div><div class="fc-sub">4 phases of impact</div></div>
+      </div>
+      <div class="floating-card bottom">
+        <div class="fc-icon" style="background:#f5e6d3"><svg fill="#a16f3a" viewBox="0 0 20 20"><path d="M10 2L2 7l8 5 8-5-8-5zM2 13l8 5 8-5"/></svg></div>
+        <div><div class="fc-text">Research &amp; Development</div><div class="fc-sub">Wood science innovation</div></div>
+      </div>
+    </div>
+    <div class="overview-text">
+      <h3 class="reveal">Value-Adding to Lao Plantation Timber Products</h3>
+      <p class="reveal">VALTIP4 (FST/2023/153) is the fourth phase of a landmark ACIAR-funded research program focused on transforming Laos's plantation timber sector. The project bridges Australian wood science expertise with Lao industry needs to create sustainable, high-value wood products from plantation resources.</p>
+      <p class="reveal">With approximately 215,000 hectares of planted timber (teak, eucalyptus, rubber, and acacia), Laos has immense potential for value-added wood manufacturing. VALTIP4 aims to unlock this potential through cutting-edge research, skills development, and policy guidance.</p>
+      <div class="overview-highlights reveal">
+        <div class="highlight-item">
+          <div class="hi-icon"><svg viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm-1 12l-3-3 1.5-1.5L9 11l3.5-3.5L14 9l-5 5z"/></svg></div>
+          <div><div class="hi-text">Engineered Wood Products</div><div class="hi-desc">Developing EWPs from small-diameter logs</div></div>
+        </div>
+        <div class="highlight-item">
+          <div class="hi-icon"><svg viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm-1 12l-3-3 1.5-1.5L9 11l3.5-3.5L14 9l-5 5z"/></svg></div>
+          <div><div class="hi-text">Capacity Building</div><div class="hi-desc">Training researchers and industry workers</div></div>
+        </div>
+        <div class="highlight-item">
+          <div class="hi-icon"><svg viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm-1 12l-3-3 1.5-1.5L9 11l3.5-3.5L14 9l-5 5z"/></svg></div>
+          <div><div class="hi-text">Policy Research</div><div class="hi-desc">Evidence-based plantation policy</div></div>
+        </div>
+        <div class="highlight-item">
+          <div class="hi-icon"><svg viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm-1 12l-3-3 1.5-1.5L9 11l3.5-3.5L14 9l-5 5z"/></svg></div>
+          <div><div class="hi-text">Technology Transfer</div><div class="hi-desc">Modern processing technologies</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- OBJECTIVES -->
+<section class="section objectives" id="objectives">
+<div class="container">
+  <div class="reveal"><span class="section-label">Our Goals</span></div>
+  <h2 class="section-title reveal">Project Objectives</h2>
+  <p class="section-subtitle reveal">VALTIP4 is built around four core objectives that drive sustainable forestry and wood manufacturing across the region.</p>
+  <div class="obj-grid">
+    <div class="obj-card reveal reveal-delay-1">
+      <div class="obj-number">01</div>
+      <h3>Policy &amp; Governance</h3>
+      <p>Assess and improve policy, regulatory, and strategic settings for plantation timber industries in Lao PDR. Provide evidence-based recommendations to government on sustainable forestry management.</p>
+    </div>
+    <div class="obj-card reveal reveal-delay-2">
+      <div class="obj-number">02</div>
+      <h3>Wood Processing Innovation</h3>
+      <p>Develop and adapt technologies for producing high-value Engineered Wood Products from small-diameter plantation logs, including veneer production, timber drying, and composite materials.</p>
+    </div>
+    <div class="obj-card reveal reveal-delay-3">
+      <div class="obj-number">03</div>
+      <h3>Industry Development</h3>
+      <p>Work directly with wood manufacturing enterprises to expand product range, improve processing efficiency, and increase the value of plantation timber resources across the supply chain.</p>
+    </div>
+    <div class="obj-card reveal reveal-delay-1">
+      <div class="obj-number">04</div>
+      <h3>Capacity Building</h3>
+      <p>Strengthen research and teaching capacity at the National University of Laos, train industry professionals in modern wood processing techniques, and develop the next generation of forestry researchers.</p>
+    </div>
+    <div class="obj-card reveal reveal-delay-2">
+      <div class="obj-number">05</div>
+      <h3>Market Access</h3>
+      <p>Map plantation wood value chains, identify market opportunities, and facilitate the entry of Lao wood products into regional and international markets with improved quality and standards.</p>
+    </div>
+    <div class="obj-card reveal reveal-delay-3">
+      <div class="obj-number">06</div>
+      <h3>Livelihood Improvement</h3>
+      <p>Enhance the livelihoods of smallholder farmers and wood processing workers through better market access, improved production techniques, and fair value distribution across the supply chain.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- KEY ACTIVITIES -->
+<section class="section activities" id="activities">
+<div class="container">
+  <div class="reveal"><span class="section-label">What We Do</span></div>
+  <h2 class="section-title reveal">Key Activities</h2>
+  <p class="section-subtitle reveal">From laboratory research to field implementation, our activities span the entire timber value chain.</p>
+  <div class="act-grid">
+    <div class="act-card reveal reveal-delay-1">
+      <div class="act-icon"><svg fill="#6d4a2a" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H8v-2h4v2zm4-4H8v-2h8v2zm0-4H8V7h8v2z"/></svg></div>
+      <h3>Wood Product R&amp;D</h3>
+      <p>Veneer production from young eucalypts, timber drying with solar kilns, rubber tree engineered products, and hemp hurd composite development.</p>
+    </div>
+    <div class="act-card reveal reveal-delay-2">
+      <div class="act-icon"><svg fill="#4a7c59" viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg></div>
+      <h3>Value Chain Mapping</h3>
+      <p>Comprehensive mapping of plantations, analysis of timber trading patterns and pricing, and identification of value-adding opportunities along the supply chain.</p>
+    </div>
+    <div class="act-card reveal reveal-delay-3">
+      <div class="act-icon"><svg fill="#8b5e34" viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg></div>
+      <h3>Training &amp; Education</h3>
+      <p>Technical training in wood gluing, finishing, machining, and recovery. Building NUoL graduates' expertise in wood science and forestry research.</p>
+    </div>
+    <div class="act-card reveal reveal-delay-1">
+      <div class="act-icon"><svg fill="#6b5b95" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg></div>
+      <h3>Policy Research</h3>
+      <p>Analysis of Lao plantation policies, governance frameworks, FLEGT/REDD considerations, and strategic recommendations for government stakeholders.</p>
+    </div>
+    <div class="act-card reveal reveal-delay-2">
+      <div class="act-icon"><svg fill="#c08a4e" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+      <h3>Industry Partnerships</h3>
+      <p>Direct collaboration with Lao furniture companies, private enterprises, and processing facilities to improve product range, quality, and market competitiveness.</p>
+    </div>
+    <div class="act-card reveal reveal-delay-3">
+      <div class="act-icon"><svg fill="#5a8f7b" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg></div>
+      <h3>Technology Transfer</h3>
+      <p>Introduction of modern processing technologies widely used in Vietnam and China, adapted for the Lao timber sector to boost efficiency and product quality.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- TIMEFRAME -->
+<section class="section timeframe" id="timeframe">
+<div class="container">
+  <div class="reveal"><span class="section-label">Project Duration</span></div>
+  <h2 class="section-title reveal">Project Timeframe</h2>
+  <p class="section-subtitle reveal">VALTIP4 runs from November 2024 to November 2029, building on nearly two decades of VALTIP research.</p>
+  <div class="tf-grid">
+    <div class="tf-card reveal reveal-delay-1">
+      <div class="tf-year">2007</div>
+      <div class="tf-phase">Phase 1</div>
+      <p>Foundational research on value-adding to Lao plantation timber. Initial partnerships and baseline studies.</p>
+    </div>
+    <div class="tf-card reveal reveal-delay-2">
+      <div class="tf-year">2012</div>
+      <div class="tf-phase">Phase 2</div>
+      <p>Enhancing key elements of value chains for plantation-grown wood across Lao PDR.</p>
+    </div>
+    <div class="tf-card reveal reveal-delay-3">
+      <div class="tf-year">2017</div>
+      <div class="tf-phase">Phase 3</div>
+      <p>Advancing enhanced wood manufacturing industries. Discovered rubber tree EWP potential.</p>
+    </div>
+    <div class="tf-card reveal reveal-delay-4">
+      <div class="tf-year">2024</div>
+      <div class="tf-phase">Phase 4 (Current)</div>
+      <p>Sustainable expansion of forestry and wood processing. A$3.1M budget over 5 years.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section timeline-section" id="timeline">
+<div class="container">
+  <div class="reveal"><span class="section-label">Milestones</span></div>
+  <h2 class="section-title reveal">Project Timeline</h2>
+  <p class="section-subtitle reveal">Key milestones across the VALTIP4 project lifecycle.</p>
+  <div class="timeline">
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-date">November 2024</div>
+        <h4>Project Launch</h4>
+        <p>Official commencement of VALTIP4, team onboarding and initial stakeholder consultations.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-date">Q1 2025</div>
+        <h4>Baseline Studies</h4>
+        <p>Comprehensive plantation mapping, policy landscape assessment, and industry needs analysis.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-date">Q3 2025</div>
+        <h4>R&amp;D Phase Begins</h4>
+        <p>Laboratory trials for engineered wood products, solar kiln optimization, and new material testing.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-date">2026</div>
+        <h4>Industry Pilot Programs</h4>
+        <p>Technology transfer to partner enterprises, training workshops, and pilot production runs.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-date">2027-2028</div>
+        <h4>Scaling &amp; Expansion</h4>
+        <p>Scaling successful pilots, expanding market access, and strengthening policy frameworks.</p>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-date">November 2029</div>
+        <h4>Project Completion</h4>
+        <p>Final reporting, legacy planning, and transition to sustainable industry practices.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- TEAM -->
+<section class="section team" id="team">
+<div class="container">
+  <div class="reveal"><span class="section-label">Our People</span></div>
+  <h2 class="section-title reveal">Project Team</h2>
+  <p class="section-subtitle reveal">A multidisciplinary team of researchers, scientists, and industry experts from Australia and Laos.</p>
+  <div class="team-grid">
+    <div class="team-card reveal reveal-delay-1">
+      <div class="team-avatar">BO</div>
+      <h4>Prof. Barbara Ozarska</h4>
+      <div class="team-role">Project Manager</div>
+      <div class="team-org">University of Melbourne</div>
+    </div>
+    <div class="team-card reveal reveal-delay-2">
+      <div class="team-avatar">LB</div>
+      <h4>Dr. Latsamy Boupha</h4>
+      <div class="team-role">Laos Country Coordinator</div>
+      <div class="team-org">National University of Laos</div>
+    </div>
+    <div class="team-card reveal reveal-delay-3">
+      <div class="team-avatar">PK</div>
+      <h4>Prof. Peter Kanowski</h4>
+      <div class="team-role">Forest Policy Lead</div>
+      <div class="team-org">Australian National University</div>
+    </div>
+    <div class="team-card reveal reveal-delay-4">
+      <div class="team-avatar">HB</div>
+      <h4>Dr. Henri Bailleres</h4>
+      <div class="team-role">Wood Processing Lead</div>
+      <div class="team-org">Queensland DAFF</div>
+    </div>
+    <div class="team-card reveal reveal-delay-1">
+      <div class="team-avatar">BB</div>
+      <h4>Dr. Benoit Belleville</h4>
+      <div class="team-role">Research Lead</div>
+      <div class="team-org">University of Melbourne</div>
+    </div>
+    <div class="team-card reveal reveal-delay-2">
+      <div class="team-avatar">KP</div>
+      <h4>Dr. Khamtan Phonetip</h4>
+      <div class="team-role">Communication Leader</div>
+      <div class="team-org">National University of Laos</div>
+    </div>
+    <div class="team-card reveal reveal-delay-3">
+      <div class="team-avatar">HS</div>
+      <h4>Dr. Hilary Smith</h4>
+      <div class="team-role">Forest Services</div>
+      <div class="team-org">Latitude Forest Services</div>
+    </div>
+    <div class="team-card reveal reveal-delay-4">
+      <div class="team-avatar">OS</div>
+      <h4>Dr. Oudone Sichaleune</h4>
+      <div class="team-role">Wood Technology</div>
+      <div class="team-org">NUoL Faculty of Forest Science</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PARTNERS -->
+<section class="section partners" id="partners">
+<div class="container">
+  <div class="reveal"><span class="section-label">Collaboration</span></div>
+  <h2 class="section-title reveal">Partners &amp; Sponsors</h2>
+  <p class="section-subtitle reveal">A strong network of Australian and Lao institutions driving research, policy, and industry development.</p>
+  <div class="partner-grid">
+    <div class="partner-group reveal">
+      <h3>Australian Partners</h3>
+      <div class="partner-list">
+        <div class="partner-item">
+          <div class="pi-icon pi-au"><svg fill="#2c5282" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 11H9v-2h2v2zm0-4H9V5h2v4z"/></svg></div>
+          <div><div class="pi-name">ACIAR</div><div class="pi-desc">Australian Centre for International Agricultural Research (Funder)</div></div>
+        </div>
+        <div class="partner-item">
+          <div class="pi-icon pi-au"><svg fill="#2c5282" viewBox="0 0 20 20"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg></div>
+          <div><div class="pi-name">University of Melbourne</div><div class="pi-desc">Lead Institution &mdash; Sustainable &amp; Renewable Forest Products</div></div>
+        </div>
+        <div class="partner-item">
+          <div class="pi-icon pi-au"><svg fill="#2c5282" viewBox="0 0 20 20"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg></div>
+          <div><div class="pi-name">Australian National University</div><div class="pi-desc">Crawford School &mdash; Forest Policy &amp; Management</div></div>
+        </div>
+        <div class="partner-item">
+          <div class="pi-icon pi-au"><svg fill="#2c5282" viewBox="0 0 20 20"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg></div>
+          <div><div class="pi-name">Queensland DAFF</div><div class="pi-desc">Department of Agriculture, Fisheries &amp; Forestry</div></div>
+        </div>
+        <div class="partner-item">
+          <div class="pi-icon pi-au"><svg fill="#2c5282" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16z"/></svg></div>
+          <div><div class="pi-name">EWPAA</div><div class="pi-desc">Engineered Wood Products Association of Australasia</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="partner-group reveal reveal-delay-2">
+      <h3>Lao Partners</h3>
+      <div class="partner-list">
+        <div class="partner-item">
+          <div class="pi-icon pi-la"><svg fill="#8b5e34" viewBox="0 0 20 20"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg></div>
+          <div><div class="pi-name">National University of Laos</div><div class="pi-desc">Faculty of Forestry, Engineering &amp; Architecture</div></div>
+        </div>
+        <div class="partner-item">
+          <div class="pi-icon pi-la"><svg fill="#8b5e34" viewBox="0 0 20 20"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg></div>
+          <div><div class="pi-name">Ministry of Agriculture &amp; Forestry</div><div class="pi-desc">Lao PDR Government Partner</div></div>
+        </div>
+        <div class="partner-item">
+          <div class="pi-icon pi-la"><svg fill="#8b5e34" viewBox="0 0 20 20"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg></div>
+          <div><div class="pi-name">Ministry of Industry &amp; Commerce</div><div class="pi-desc">Lao PDR Government Partner</div></div>
+        </div>
+        <div class="partner-item">
+          <div class="pi-icon pi-la"><svg fill="#8b5e34" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16z"/></svg></div>
+          <div><div class="pi-name">Burapha Agroforestry</div><div class="pi-desc">Industry Partner</div></div>
+        </div>
+        <div class="partner-item">
+          <div class="pi-icon pi-la"><svg fill="#8b5e34" viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16 8 8 0 000-16z"/></svg></div>
+          <div><div class="pi-name">Lao Furniture Association</div><div class="pi-desc">National Industry Body</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- IMPACT -->
+<section class="section impact" id="impact">
+<div class="container">
+  <div class="reveal"><span class="section-label">Expected Outcomes</span></div>
+  <h2 class="section-title reveal">Projected Impact</h2>
+  <p class="section-subtitle reveal">VALTIP4 aims to deliver lasting change for communities, industries, and ecosystems across the region.</p>
+  <div class="impact-grid">
+    <div class="impact-card reveal reveal-delay-1">
+      <div class="impact-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+      <div><h4>Enhanced Wood Processing</h4><p>Improved capabilities using modern technologies, enabling Lao manufacturers to produce high-value engineered wood products from plantation timber.</p></div>
+    </div>
+    <div class="impact-card reveal reveal-delay-2">
+      <div class="impact-icon"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+      <div><h4>Improved Livelihoods</h4><p>Better market access and fair value distribution for smallholder farmers and wood processing workers, lifting communities out of poverty.</p></div>
+    </div>
+    <div class="impact-card reveal reveal-delay-3">
+      <div class="impact-icon"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg></div>
+      <div><h4>Research Capacity</h4><p>Strengthened wood science research and teaching at the National University of Laos, creating a self-sustaining knowledge base for future generations.</p></div>
+    </div>
+    <div class="impact-card reveal reveal-delay-4">
+      <div class="impact-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg></div>
+      <div><h4>International Competitiveness</h4><p>Greater global market competitiveness for Lao wood industries through quality improvements, standards compliance, and product diversification.</p></div>
+    </div>
+    <div class="impact-card reveal reveal-delay-1">
+      <div class="impact-icon"><svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2z"/></svg></div>
+      <div><h4>Policy Framework</h4><p>Evidence-based policy recommendations for the Lao government on plantation management, timber trade, and sustainable forestry practices.</p></div>
+    </div>
+    <div class="impact-card reveal reveal-delay-2">
+      <div class="impact-icon"><svg viewBox="0 0 24 24"><path d="M17 20.41L18.41 19 15 15.59 13.59 17 17 20.41zM7.5 8H11v5.59L5.59 19 7 20.41l6-6V8h3.5L12 3.5 7.5 8z"/></svg></div>
+      <div><h4>Sustainable Forestry</h4><p>Environmentally responsible expansion of both forestry and wood processing sectors, balancing economic growth with ecological preservation.</p></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="section gallery" id="gallery">
+<div class="container">
+  <div class="reveal"><span class="section-label">Gallery</span></div>
+  <h2 class="section-title reveal">Photo Gallery</h2>
+  <p class="section-subtitle reveal">Snapshots from the field, laboratory, and community engagement activities.</p>
+  <div class="gallery-grid reveal">
+    <div class="gallery-item">
+      <div class="gi-inner">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        Plantation Field Visit
+      </div>
+      <div class="gallery-caption">Teak plantation field survey in Luang Prabang Province</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gi-inner">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        Lab Research
+      </div>
+      <div class="gallery-caption">Wood science laboratory at University of Melbourne</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gi-inner">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        Training Workshop
+      </div>
+      <div class="gallery-caption">Technical training at NUoL Faculty of Forestry</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gi-inner">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        Community Meeting
+      </div>
+      <div class="gallery-caption">Stakeholder consultation with farming communities</div>
+    </div>
+    <div class="gallery-item">
+      <div class="gi-inner">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        Wood Products
+      </div>
+      <div class="gallery-caption">Engineered wood product samples from plantation timber</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+<div class="container">
+  <h2 class="reveal">Ready to Collaborate?</h2>
+  <p class="reveal">Join us in advancing sustainable forestry and wood manufacturing across Laos and Australia.</p>
+  <div class="cta-btns reveal">
+    <a href="#contact" class="btn btn-white">Contact Us</a>
+    <a href="#overview" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.3)">Learn More</a>
+  </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+<div class="container">
+  <div class="reveal"><span class="section-label">Get in Touch</span></div>
+  <h2 class="section-title reveal">Contact Us</h2>
+  <p class="section-subtitle reveal">Interested in partnership, research collaboration, or learning more about VALTIP4?</p>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <div class="ci-item">
+        <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+        <div><h4>Email</h4><a href="mailto:valtip4@gmail.com">valtip4@gmail.com</a></div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+        <div><h4>Phone</h4><a href="tel:+85620296418896">+856 20 2964 1886</a></div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+        <div><h4>Addresses</h4>
+          <p>University of Melbourne, Burnley Campus<br>500 Yarra Boulevard, Richmond VIC 3121, Australia</p>
+          <p style="margin-top:8px">National University of Laos<br>Dongdok Campus, Vientiane, Lao PDR</p>
+        </div>
+      </div>
+      <div class="ci-item">
+        <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg></div>
+        <div><h4>Website</h4><a href="https://laoplantation.org.la" target="_blank">laoplantation.org.la</a></div>
+      </div>
+    </div>
+    <div class="contact-form reveal reveal-delay-2">
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="your@email.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="role">I am a...</label>
+          <select id="role">
+            <option value="">Select your role</option>
+            <option>Researcher / Academic</option>
+            <option>Industry Professional</option>
+            <option>Government / Policy Maker</option>
+            <option>Student</option>
+            <option>Donor / Funding Organization</option>
+            <option>Community Member</option>
+            <option>Media / Press</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" placeholder="How can we help?">
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Tell us about your interest in VALTIP4..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Send Message</button>
+      </form>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">
+        <svg viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="#6d4a2a"/><path d="M12 28V12h4l4 10 4-10h4v16h-3V18l-3.5 8h-3L15 18v10h-3z" fill="#fff"/></svg>
+        <div><span>VALTIP</span><span class="phase">PHASE 4</span></div>
+      </a>
+      <p>Advancing enhanced wood manufacturing industries in Laos and Australia. An ACIAR-funded research project.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#objectives">Objectives</a></li>
+        <li><a href="#activities">Activities</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Project</h4>
+      <ul>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#partners">Partners</a></li>
+        <li><a href="#impact">Impact</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="mailto:valtip4@gmail.com">valtip4@gmail.com</a></li>
+        <li><a href="https://laoplantation.org.la" target="_blank">Website</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2024-2029 VALTIP4. All rights reserved.</span>
+    <div class="footer-logos">
+      <span>Funded by ACIAR</span>
+      <span>|</span>
+      <span>University of Melbourne</span>
+      <span>|</span>
+      <span>National University of Laos</span>
+    </div>
+  </div>
+</div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  const spans = hamburger.querySelectorAll('span');
+  if (navLinks.classList.contains('open')) {
+    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+    spans[1].style.opacity = '0';
+    spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+  } else {
+    spans[0].style.transform = '';
+    spans[1].style.opacity = '';
+    spans[2].style.transform = '';
+  }
+});
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+  });
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Form handler
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  btn.textContent = 'Message Sent!';
+  btn.style.background = '#4a7c59';
+  setTimeout(() => {
+    btn.textContent = 'Send Message';
+    btn.style.background = '';
+    e.target.reset();
+  }, 3000);
+}
+</script>
+</body>
+</html>
