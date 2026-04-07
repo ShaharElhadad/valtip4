@@ -1,1313 +1,1034 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VALTIP4 — Advancing Wood Manufacturing in Laos & Australia</title>
-<meta name="description" content="Value-Adding to Lao Plantation Timber Products Phase 4. Sustainable forestry expansion and wood processing. Funded by ACIAR.">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VALTIP4 — Sustainable Forestry & Wood Processing in Laos and Australia</title>
+<meta name="description" content="ACIAR Project FST/2023/153 — Sustainable Expansion of Forestry and Wood Processing in Laos and Australia (2025-2030)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ========== RESET & TOKENS ========== */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-
 :root{
-  /* Brown palette */
-  --brown-50:#faf7f4;
-  --brown-100:#f0e8de;
-  --brown-200:#e0cfbb;
-  --brown-300:#c9ad8e;
-  --brown-400:#b08c64;
-  --brown-500:#96734a;
-  --brown-600:#7d5e3a;
-  --brown-700:#654a2e;
-  --brown-800:#4d3722;
-  --brown-900:#3a2a1a;
-  --brown-950:#241a10;
+--brown-50:#fdf8f1;--brown-100:#f5e6d0;--brown-200:#e8c9a0;--brown-300:#d4a574;
+--brown-400:#c4864e;--brown-500:#a0673a;--brown-600:#7a4e2d;--brown-700:#5c3a21;
+--brown-800:#3d2615;--brown-900:#2a1a0e;--brown-950:#1a100a;
+--green-500:#0F6E56;--green-600:#0a5a45;--purple-500:#534AB7;--orange-500:#BA7517;
+--red-500:#D85A30;--dkgreen-500:#3B6D11;--teal-500:#0F6E56;
+--gold:#d4a054;--cream:#faf6f0;--dark:#1a100a;
+--font-display:'Playfair Display',Georgia,serif;
+--font-body:'Inter',-apple-system,sans-serif;
+--font-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:var(--font-body);color:#3d2615;background:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
 
-  /* Accent */
-  --gold:#c9a355;
-  --gold-light:#dfc07a;
-  --green:#5a8a65;
-  --green-light:#e9f1eb;
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--brown-900)}
+::-webkit-scrollbar-thumb{background:var(--brown-400);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:var(--gold)}
 
-  /* Semantic */
-  --cream:#faf8f5;
-  --white:#ffffff;
-  --text-primary:#2a1f14;
-  --text-secondary:#5c4a38;
-  --text-muted:#8a7a6a;
+/* ===== REVEAL ANIMATIONS ===== */
+.rv{opacity:0;transform:translateY(40px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.rv.vis{opacity:1;transform:translateY(0)}
+.rv-left{opacity:0;transform:translateX(-60px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.rv-left.vis{opacity:1;transform:translateX(0)}
+.rv-right{opacity:0;transform:translateX(60px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.rv-right.vis{opacity:1;transform:translateX(0)}
+.rv-scale{opacity:0;transform:scale(.85);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.rv-scale.vis{opacity:1;transform:scale(1)}
 
-  /* Spacing scale (4px base) */
-  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px;
-  --sp-5:24px; --sp-6:32px; --sp-7:48px; --sp-8:64px;
-  --sp-9:96px; --sp-10:128px;
+/* ===== NAVBAR ===== */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:18px 0;transition:all .4s ease}
+.nav.scrolled{background:rgba(26,16,10,.95);backdrop-filter:blur(20px);padding:12px 0;box-shadow:0 4px 30px rgba(0,0,0,.3)}
+.nav-inner{max-width:1300px;margin:0 auto;padding:0 30px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--gold),var(--brown-400));border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:18px;font-family:var(--font-display)}
+.nav-logo-text{font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;letter-spacing:-.5px}
+.nav-logo-text span{color:var(--gold)}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{color:rgba(255,255,255,.75);font-size:14px;font-weight:500;transition:color .3s;position:relative}
+.nav-links a:hover{color:#fff}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--gold);transition:width .3s}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:linear-gradient(135deg,var(--gold),var(--brown-400));color:#fff!important;padding:10px 22px;border-radius:50px;font-weight:600;border:none;cursor:pointer;transition:transform .3s,box-shadow .3s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(212,160,84,.4)}
+.nav-cta::after{display:none!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px}
+.hamburger span{width:24px;height:2px;background:#fff;transition:all .3s}
 
-  /* Typography */
-  --font-body:'Inter',system-ui,-apple-system,sans-serif;
-  --font-display:'Playfair Display',Georgia,serif;
+/* ===== HERO ===== */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--brown-950)}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.45}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,16,10,.92) 0%,rgba(42,26,14,.75) 40%,rgba(15,110,86,.3) 100%)}
+.hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.hero-particle{position:absolute;width:4px;height:4px;background:var(--gold);border-radius:50%;opacity:.3;animation:float-particle 15s infinite linear}
+@keyframes float-particle{0%{transform:translateY(100vh) translateX(0);opacity:0}10%{opacity:.4}90%{opacity:.4}100%{transform:translateY(-100px) translateX(100px);opacity:0}}
+.hero-content{position:relative;z-index:2;max-width:1300px;margin:0 auto;padding:140px 30px 100px;display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,160,84,.15);border:1px solid rgba(212,160,84,.3);padding:8px 18px;border-radius:50px;margin-bottom:24px}
+.hero-badge-dot{width:8px;height:8px;background:var(--gold);border-radius:50%;animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
+.hero-badge span{color:var(--gold);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px}
+.hero h1{font-family:var(--font-display);font-size:clamp(36px,5vw,64px);font-weight:800;color:#fff;line-height:1.1;margin-bottom:20px}
+.hero h1 .highlight{background:linear-gradient(135deg,var(--gold),#e8b96a);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:18px;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:36px;max-width:560px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--brown-400));color:#fff;padding:15px 34px;border-radius:50px;font-weight:600;font-size:15px;border:none;cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(212,160,84,.3)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(212,160,84,.5)}
+.btn-secondary{background:transparent;color:#fff;padding:15px 34px;border-radius:50px;font-weight:600;font-size:15px;border:2px solid rgba(255,255,255,.25);cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;gap:8px}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
+.hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.hero-stat{background:rgba(255,255,255,.06);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:28px 24px;text-align:center;transition:all .4s}
+.hero-stat:hover{background:rgba(212,160,84,.12);border-color:rgba(212,160,84,.3);transform:translateY(-4px)}
+.hero-stat-num{font-family:var(--font-display);font-size:42px;font-weight:800;background:linear-gradient(135deg,var(--gold),#e8b96a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.hero-stat-label{color:rgba(255,255,255,.6);font-size:13px;margin-top:8px;font-weight:500;text-transform:uppercase;letter-spacing:1px}
 
-  /* Easing (M3 standard) */
-  --ease-standard:cubic-bezier(0.2, 0, 0, 1);
-  --ease-decel:cubic-bezier(0.05, 0.7, 0.1, 1);
-  --ease-accel:cubic-bezier(0.3, 0, 0.8, 0.15);
+/* ===== SECTION STYLES ===== */
+section{padding:100px 0}
+.container{max-width:1300px;margin:0 auto;padding:0 30px}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--brown-400);margin-bottom:16px}
+.section-label::before{content:'';width:30px;height:2px;background:var(--gold)}
+.section-title{font-family:var(--font-display);font-size:clamp(30px,4vw,50px);font-weight:800;color:var(--brown-900);line-height:1.15;margin-bottom:20px}
+.section-title .gold{color:var(--gold)}
+.section-desc{font-size:17px;color:var(--brown-600);line-height:1.8;max-width:650px}
+.section-dark{background:var(--brown-950);color:#fff}
+.section-dark .section-label{color:var(--gold)}
+.section-dark .section-title{color:#fff}
+.section-dark .section-desc{color:rgba(255,255,255,.65)}
+.section-alt{background:linear-gradient(180deg,var(--brown-50),var(--cream))}
 
-  /* Radius */
-  --radius-sm:8px;
-  --radius-md:12px;
-  --radius-lg:16px;
-  --radius-xl:24px;
+/* ===== OVERVIEW ===== */
+.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:50px}
+.overview-img{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.15)}
+.overview-img img{width:100%;height:450px;object-fit:cover}
+.overview-img-overlay{position:absolute;bottom:0;left:0;right:0;padding:30px;background:linear-gradient(transparent,rgba(26,16,10,.85))}
+.overview-img-overlay p{color:#fff;font-size:14px;font-weight:500}
+.overview-text p{font-size:16px;color:var(--brown-700);line-height:1.9;margin-bottom:20px}
+.overview-text p:first-child::first-letter{font-size:48px;font-family:var(--font-display);font-weight:800;color:var(--gold);float:left;margin:0 12px 0 0;line-height:1}
+.overview-highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.overview-hl{background:linear-gradient(135deg,rgba(212,160,84,.08),rgba(212,160,84,.03));border:1px solid rgba(212,160,84,.15);border-radius:16px;padding:20px;text-align:center}
+.overview-hl-num{font-family:var(--font-display);font-size:28px;font-weight:800;color:var(--brown-800)}
+.overview-hl-label{font-size:12px;color:var(--brown-500);margin-top:4px;text-transform:uppercase;letter-spacing:.5px}
 
-  /* Shadows (layered) */
-  --shadow-sm:0 1px 2px rgba(42,31,20,0.06), 0 1px 3px rgba(42,31,20,0.1);
-  --shadow-md:0 4px 6px rgba(42,31,20,0.05), 0 10px 15px rgba(42,31,20,0.1);
-  --shadow-lg:0 10px 25px rgba(42,31,20,0.07), 0 20px 48px rgba(42,31,20,0.1);
-  --shadow-xl:0 25px 50px rgba(42,31,20,0.12);
-}
+/* ===== OBJECTIVES ===== */
+.obj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:50px}
+.obj-card{position:relative;background:#fff;border-radius:20px;padding:36px 28px;border:1px solid rgba(212,160,84,.1);transition:all .4s;overflow:hidden}
+.obj-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--gold),var(--brown-300));opacity:0;transition:opacity .4s}
+.obj-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.1);border-color:rgba(212,160,84,.3)}
+.obj-card:hover::before{opacity:1}
+.obj-num{font-family:var(--font-mono);font-size:13px;color:var(--gold);font-weight:600;margin-bottom:16px;letter-spacing:1px}
+.obj-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:24px}
+.obj-card h3{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--brown-900);margin-bottom:12px;line-height:1.3}
+.obj-card p{font-size:14px;color:var(--brown-600);line-height:1.7}
 
-html{scroll-behavior:smooth;font-size:16px;-webkit-text-size-adjust:100%}
-body{font-family:var(--font-body);color:var(--text-primary);background:var(--cream);overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+/* ===== RESEARCH STREAMS ===== */
+.streams-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:50px}
+.stream-card{position:relative;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:36px 28px;overflow:hidden;transition:all .5s}
+.stream-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:var(--stream-color);opacity:0;transition:opacity .4s}
+.stream-card:hover{transform:translateY(-6px);border-color:var(--stream-color)}
+.stream-card:hover::before{opacity:.08}
+.stream-num{font-family:var(--font-mono);font-size:12px;color:rgba(255,255,255,.4);font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;position:relative;z-index:1}
+.stream-icon-wrap{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;position:relative;z-index:1;font-size:26px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
+.stream-card h3{font-family:var(--font-display);font-size:20px;font-weight:700;color:#fff;margin-bottom:12px;position:relative;z-index:1;line-height:1.3}
+.stream-card p{font-size:14px;color:rgba(255,255,255,.55);line-height:1.7;position:relative;z-index:1}
+.stream-tag{display:inline-block;margin-top:16px;padding:6px 14px;border-radius:50px;font-size:11px;font-weight:600;position:relative;z-index:1;background:var(--stream-color);color:#fff;opacity:.8}
 
-h1,h2,h3,h4{font-family:var(--font-display);line-height:1.15;letter-spacing:-0.02em}
+/* ===== TIMELINE ===== */
+.timeline{position:relative;margin-top:60px;padding-left:50px}
+.timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--gold),var(--brown-300),var(--green-500))}
+.timeline-item{position:relative;margin-bottom:50px;padding-left:40px}
+.timeline-dot{position:absolute;left:-42px;top:4px;width:24px;height:24px;border-radius:50%;background:var(--gold);border:4px solid var(--cream);box-shadow:0 0 0 3px var(--gold),0 4px 15px rgba(212,160,84,.3);z-index:1}
+.timeline-year{font-family:var(--font-mono);font-size:14px;color:var(--gold);font-weight:600;letter-spacing:1px;margin-bottom:8px}
+.timeline-item h3{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--brown-900);margin-bottom:10px}
+.timeline-item p{font-size:15px;color:var(--brown-600);line-height:1.8;margin-bottom:12px}
+.timeline-tags{display:flex;flex-wrap:wrap;gap:8px}
+.timeline-tag{padding:5px 14px;border-radius:50px;font-size:12px;font-weight:500;background:rgba(212,160,84,.1);color:var(--brown-600);border:1px solid rgba(212,160,84,.15)}
 
-img,svg{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
+/* ===== TEAM ===== */
+.team-header{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:60px}
+.team-img{border-radius:24px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.2)}
+.team-img img{width:100%;height:400px;object-fit:cover}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.team-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:28px 20px;text-align:center;transition:all .4s}
+.team-card:hover{background:rgba(255,255,255,.08);transform:translateY(-4px);border-color:rgba(212,160,84,.3)}
+.team-avatar{width:72px;height:72px;border-radius:50%;margin:0 auto 16px;background:linear-gradient(135deg,var(--gold),var(--brown-400));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:24px;font-weight:700;color:#fff;border:3px solid rgba(255,255,255,.1)}
+.team-card h4{font-family:var(--font-display);font-size:16px;font-weight:600;color:#fff;margin-bottom:4px}
+.team-card .role{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:8px}
+.team-card .org{font-size:11px;color:var(--gold);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
 
-/* ========== LAYOUT ========== */
-.container{
-  width:100%;
-  max-width:1200px;
-  margin-inline:auto;
-  padding-inline:var(--sp-4);
-}
-@media(min-width:640px){.container{padding-inline:var(--sp-5)}}
-@media(min-width:1280px){.container{padding-inline:var(--sp-6)}}
+/* ===== PARTNERS ===== */
+.partners-intro{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:50px}
+.partner-categories{display:grid;gap:24px}
+.partner-cat{background:#fff;border-radius:20px;padding:32px;border:1px solid rgba(212,160,84,.1);transition:all .4s}
+.partner-cat:hover{box-shadow:0 15px 40px rgba(0,0,0,.08);transform:translateY(-3px)}
+.partner-cat-head{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.partner-cat-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px}
+.partner-cat h3{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--brown-900)}
+.partner-cat p{font-size:14px;color:var(--brown-600);line-height:1.7}
+.partner-logos{display:grid;gap:20px}
+.partner-logo-card{background:#fff;border-radius:16px;padding:28px;border:1px solid rgba(212,160,84,.1);text-align:center;transition:all .4s}
+.partner-logo-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.06)}
+.partner-logo-card h4{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--brown-800);margin-bottom:6px}
+.partner-logo-card p{font-size:13px;color:var(--brown-500)}
 
-.section{padding-block:var(--sp-8)}
-@media(min-width:768px){.section{padding-block:var(--sp-9)}}
-@media(min-width:1024px){.section{padding-block:var(--sp-10)}}
+/* ===== IMPACT ===== */
+.impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:50px}
+.impact-card{position:relative;border-radius:24px;overflow:hidden;min-height:320px;display:flex;align-items:flex-end;cursor:pointer;transition:transform .4s}
+.impact-card:hover{transform:translateY(-6px)}
+.impact-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.impact-card:hover img{transform:scale(1.05)}
+.impact-card-overlay{position:relative;z-index:1;width:100%;padding:28px;background:linear-gradient(transparent,rgba(26,16,10,.9))}
+.impact-card-icon{font-size:28px;margin-bottom:12px}
+.impact-card h3{font-family:var(--font-display);font-size:18px;font-weight:700;color:#fff;margin-bottom:8px}
+.impact-card p{font-size:13px;color:rgba(255,255,255,.7);line-height:1.6}
 
-/* ========== SECTION HEADER ========== */
-.section-header{margin-bottom:var(--sp-7)}
-.section-label{
-  display:inline-flex;align-items:center;gap:var(--sp-2);
-  font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--brown-500);margin-bottom:var(--sp-3);
-}
-.section-label::before{content:'';width:24px;height:2px;background:var(--gold);border-radius:1px}
-.section-title{
-  font-size:clamp(1.75rem, 4vw, 2.75rem);
-  color:var(--brown-950);
-  margin-bottom:var(--sp-4);
-  max-width:700px;
-}
-.section-desc{
-  font-size:clamp(0.95rem, 1.2vw, 1.1rem);
-  color:var(--text-muted);
-  max-width:560px;
-  line-height:1.7;
-}
-.section-header.center{text-align:center}
-.section-header.center .section-title,
-.section-header.center .section-desc{margin-inline:auto}
+/* ===== GALLERY ===== */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:50px}
+.gallery-item{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/3;cursor:pointer}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-item-overlay{position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(26,16,10,.8));opacity:0;transition:opacity .4s;display:flex;align-items:flex-end;padding:24px}
+.gallery-item:hover .gallery-item-overlay{opacity:1}
+.gallery-item-overlay p{color:#fff;font-size:14px;font-weight:500}
+.gallery-item:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
 
-/* ========== BUTTONS ========== */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-2);
-  padding:var(--sp-3) var(--sp-5);
-  border-radius:var(--radius-sm);
-  font-family:var(--font-body);font-size:0.9rem;font-weight:600;
-  border:none;cursor:pointer;
-  transition:all 250ms var(--ease-standard);
-  white-space:nowrap;
-}
-.btn svg{width:18px;height:18px;flex-shrink:0}
-.btn-primary{background:var(--brown-700);color:var(--white)}
-.btn-primary:hover{background:var(--brown-800);box-shadow:var(--shadow-md)}
-.btn-outline{background:transparent;color:var(--brown-700);border:1.5px solid var(--brown-300)}
-.btn-outline:hover{background:var(--brown-700);color:var(--white);border-color:var(--brown-700)}
-.btn-white{background:rgba(255,255,255,0.15);color:var(--white);border:1.5px solid rgba(255,255,255,0.3);backdrop-filter:blur(4px)}
-.btn-white:hover{background:rgba(255,255,255,0.25)}
-.btn-gold{background:var(--gold);color:var(--brown-950)}
-.btn-gold:hover{background:var(--gold-light);box-shadow:var(--shadow-md)}
-.btn-lg{padding:var(--sp-4) var(--sp-6);font-size:1rem;border-radius:var(--radius-md)}
-
-/* ========== NAVIGATION ========== */
-.nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  padding-block:var(--sp-4);
-  transition:all 400ms var(--ease-standard);
-}
-.nav.scrolled{
-  background:rgba(250,248,245,0.92);
-  backdrop-filter:blur(20px);
-  box-shadow:0 1px 0 rgba(42,31,20,0.08);
-  padding-block:var(--sp-3);
-}
-.nav-inner{display:flex;align-items:center;justify-content:space-between}
-.nav-logo{display:flex;align-items:center;gap:var(--sp-3);text-decoration:none}
-.nav-logo-icon{
-  width:36px;height:36px;border-radius:var(--radius-sm);
-  background:var(--brown-700);color:var(--white);
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-display);font-weight:700;font-size:0.9rem;
-}
-.nav-logo-text{font-family:var(--font-display);font-size:1.2rem;font-weight:700;color:var(--brown-900)}
-.nav-logo-text small{display:block;font-family:var(--font-body);font-size:0.65rem;font-weight:600;letter-spacing:0.1em;color:var(--brown-400);text-transform:uppercase;margin-top:-2px}
-.nav-links{display:none;gap:var(--sp-6);align-items:center}
-.nav-links a{font-size:0.875rem;font-weight:500;color:var(--text-secondary);transition:color 200ms var(--ease-standard)}
-.nav-links a:hover{color:var(--brown-700)}
-.nav-cta{display:none}
-@media(min-width:1024px){
-  .nav-links{display:flex}
-  .nav-cta{display:inline-flex}
-  .hamburger{display:none!important}
-}
-
-/* Hamburger */
-.hamburger{
-  display:flex;flex-direction:column;gap:5px;
-  background:none;border:none;cursor:pointer;padding:var(--sp-2);
-}
-.hamburger span{display:block;width:22px;height:2px;background:var(--brown-700);border-radius:1px;transition:all 300ms var(--ease-standard)}
-.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-.hamburger.active span:nth-child(2){opacity:0}
-.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-
-/* Mobile menu */
-.mobile-menu{
-  display:none;position:fixed;top:0;left:0;right:0;bottom:0;
-  background:rgba(250,248,245,0.98);backdrop-filter:blur(20px);
-  z-index:99;padding:100px var(--sp-5) var(--sp-7);
-  flex-direction:column;gap:var(--sp-4);
-}
-.mobile-menu.open{display:flex}
-.mobile-menu a{
-  font-size:1.25rem;font-weight:500;color:var(--text-secondary);
-  padding:var(--sp-3) 0;border-bottom:1px solid var(--brown-100);
-  transition:color 200ms var(--ease-standard);
-}
-.mobile-menu a:hover{color:var(--brown-700)}
-.mobile-menu .btn{margin-top:var(--sp-4);width:100%;justify-content:center}
-
-/* ========== HERO ========== */
-.hero{
-  min-height:100vh;min-height:100svh;
-  display:flex;align-items:center;
-  position:relative;overflow:hidden;
-  background:var(--brown-950);
-  padding-top:80px;
-}
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(201,163,85,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 80% at 20% 80%, rgba(101,74,46,0.2) 0%, transparent 50%);
-  pointer-events:none;
-}
-.hero-inner{position:relative;z-index:2;padding-block:var(--sp-8) var(--sp-9)}
-@media(min-width:768px){.hero-inner{padding-block:var(--sp-9) var(--sp-10)}}
-
-.hero-label{
-  display:inline-flex;align-items:center;gap:var(--sp-2);
-  background:rgba(255,255,255,0.07);
-  padding:var(--sp-2) var(--sp-4);
-  border-radius:50px;border:1px solid rgba(255,255,255,0.1);
-  font-size:0.8rem;font-weight:500;color:rgba(255,255,255,0.7);
-  margin-bottom:var(--sp-6);
-}
-.hero-label svg{width:16px;height:16px;color:var(--gold)}
-
-.hero h1{
-  font-size:clamp(2.2rem, 5.5vw, 4rem);
-  color:var(--white);
-  margin-bottom:var(--sp-5);
-  max-width:680px;
-  line-height:1.1;
-}
-.hero h1 em{font-style:normal;color:var(--gold-light)}
-
-.hero-desc{
-  font-size:clamp(1rem, 1.3vw, 1.15rem);
-  color:rgba(255,255,255,0.6);
-  line-height:1.75;
-  max-width:520px;
-  margin-bottom:var(--sp-7);
-}
-.hero-btns{display:flex;gap:var(--sp-3);flex-wrap:wrap}
-
-.hero-stats{
-  display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-5);
-  margin-top:var(--sp-8);
-  padding-top:var(--sp-7);
-  border-top:1px solid rgba(255,255,255,0.1);
-}
-@media(min-width:640px){.hero-stats{grid-template-columns:repeat(4,1fr)}}
-.stat-value{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;color:var(--gold-light)}
-.stat-label{font-size:0.8rem;color:rgba(255,255,255,0.45);margin-top:var(--sp-1);line-height:1.4}
-
-/* ========== OVERVIEW ========== */
-.overview{background:var(--white)}
-.overview-grid{
-  display:grid;grid-template-columns:1fr;gap:var(--sp-7);
-  align-items:center;
-}
-@media(min-width:768px){.overview-grid{grid-template-columns:1fr 1fr;gap:var(--sp-8)}}
-
-.overview-visual{
-  position:relative;border-radius:var(--radius-xl);overflow:hidden;
-  aspect-ratio:4/3;
-  background:linear-gradient(135deg, var(--brown-100), var(--brown-200));
-}
-.overview-visual-inner{
-  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
-  padding:var(--sp-7);
-}
-.overview-visual-inner svg{width:60%;height:auto;opacity:0.35;color:var(--brown-500)}
-
-.overview-card{
-  position:absolute;background:var(--white);
-  border-radius:var(--radius-md);padding:var(--sp-3) var(--sp-4);
-  box-shadow:var(--shadow-lg);
-  display:flex;align-items:center;gap:var(--sp-3);
-}
-.overview-card.top{top:var(--sp-5);right:var(--sp-4)}
-.overview-card.bottom{bottom:var(--sp-5);left:var(--sp-4)}
-.overview-card-icon{
-  width:36px;height:36px;border-radius:var(--radius-sm);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-}
-.overview-card-icon svg{width:18px;height:18px}
-.overview-card-title{font-size:0.8rem;font-weight:600;color:var(--brown-800)}
-.overview-card-sub{font-size:0.7rem;color:var(--text-muted)}
-
-.overview-content h3{font-size:clamp(1.3rem,2.5vw,1.7rem);color:var(--brown-900);margin-bottom:var(--sp-4)}
-.overview-content p{color:var(--text-muted);line-height:1.8;margin-bottom:var(--sp-5)}
-
-.overview-highlights{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3)}
-@media(max-width:480px){.overview-highlights{grid-template-columns:1fr}}
-.hi-item{
-  display:flex;align-items:flex-start;gap:var(--sp-3);
-  padding:var(--sp-4);border-radius:var(--radius-md);
-  background:var(--brown-50);
-  transition:background 200ms var(--ease-standard);
-}
-.hi-item:hover{background:var(--brown-100)}
-.hi-icon{
-  width:32px;height:32px;border-radius:var(--radius-sm);
-  background:var(--brown-700);color:var(--white);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-}
-.hi-icon svg{width:16px;height:16px}
-.hi-text{font-size:0.82rem;font-weight:600;color:var(--brown-800);line-height:1.4}
-
-/* ========== OBJECTIVES ========== */
-.objectives{background:var(--cream)}
-.obj-grid{
-  display:grid;grid-template-columns:1fr;gap:var(--sp-4);
-}
-@media(min-width:640px){.obj-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1024px){.obj-grid{grid-template-columns:repeat(3,1fr)}}
-
-.obj-card{
-  padding:var(--sp-6);
-  border-radius:var(--radius-lg);
-  background:var(--white);
-  border:1px solid var(--brown-100);
-  transition:all 300ms var(--ease-standard);
-  position:relative;
-}
-.obj-card:hover{
-  border-color:var(--brown-200);
-  box-shadow:var(--shadow-md);
-  transform:translateY(-2px);
-}
-.obj-num{
-  font-family:var(--font-display);font-size:2rem;font-weight:700;
-  color:var(--brown-200);margin-bottom:var(--sp-4);line-height:1;
-}
-.obj-card h3{font-size:1.05rem;color:var(--brown-900);margin-bottom:var(--sp-3);font-family:var(--font-body);font-weight:600;letter-spacing:0}
-.obj-card p{font-size:0.88rem;color:var(--text-muted);line-height:1.7}
-
-/* ========== KEY ACTIVITIES ========== */
-.activities{background:var(--white)}
-.act-grid{
-  display:grid;grid-template-columns:1fr;gap:var(--sp-5);
-}
-@media(min-width:768px){.act-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1024px){.act-grid{grid-template-columns:repeat(3,1fr)}}
-
-.act-card{
-  padding:var(--sp-6);
-  border-radius:var(--radius-lg);
-  background:var(--brown-50);
-  transition:all 300ms var(--ease-standard);
-  position:relative;overflow:hidden;
-}
-.act-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--brown-400),var(--gold));
-  transform:scaleX(0);transform-origin:left;
-  transition:transform 400ms var(--ease-decel);
-}
-.act-card:hover::before{transform:scaleX(1)}
-.act-card:hover{background:var(--brown-100)}
-
-.act-icon{
-  width:44px;height:44px;border-radius:var(--radius-md);
-  background:var(--brown-700);color:var(--white);
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:var(--sp-5);
-}
-.act-icon svg{width:22px;height:22px}
-.act-card h3{font-size:1rem;font-family:var(--font-body);font-weight:600;color:var(--brown-900);margin-bottom:var(--sp-3)}
-.act-card p{font-size:0.88rem;color:var(--text-muted);line-height:1.7}
-
-/* ========== TIMEFRAME ========== */
-.timeframe{
-  background:var(--brown-950);color:var(--white);
-  position:relative;overflow:hidden;
-}
-.timeframe::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 60% 50% at 80% 30%, rgba(201,163,85,0.08) 0%, transparent 60%);
-  pointer-events:none;
-}
-.timeframe .section-label{color:var(--gold)}
-.timeframe .section-title{color:var(--white)}
-.timeframe .section-desc{color:rgba(255,255,255,0.5)}
-
-.tf-grid{
-  display:grid;grid-template-columns:1fr;gap:var(--sp-4);
-  position:relative;
-}
-@media(min-width:640px){.tf-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1024px){.tf-grid{grid-template-columns:repeat(4,1fr)}}
-
-.tf-card{
-  padding:var(--sp-6);
-  border-radius:var(--radius-lg);
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.08);
-  transition:all 300ms var(--ease-standard);
-}
-.tf-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.15)}
-.tf-phase{
-  display:inline-flex;align-items:center;gap:var(--sp-2);
-  font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:var(--sp-4);
-}
-.tf-years{font-family:var(--font-display);font-size:1.5rem;font-weight:600;color:var(--white);margin-bottom:var(--sp-3)}
-.tf-card h3{font-size:0.95rem;font-family:var(--font-body);font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:var(--sp-3)}
-.tf-card p{font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.7}
-
-/* ========== TIMELINE ========== */
-.timeline-sec{background:var(--cream)}
-.timeline{
-  position:relative;
-  max-width:700px;
-  margin-inline:auto;
-  padding-left:var(--sp-7);
-}
-.timeline::before{
-  content:'';position:absolute;left:15px;top:0;bottom:0;width:2px;
-  background:var(--brown-200);border-radius:1px;
-}
-.tl-item{
-  position:relative;
-  padding-bottom:var(--sp-7);
-}
-.tl-item:last-child{padding-bottom:0}
-.tl-dot{
-  position:absolute;left:-33px;top:4px;
-  width:12px;height:12px;border-radius:50%;
-  background:var(--brown-700);border:3px solid var(--cream);
-}
-.tl-item.active .tl-dot{background:var(--gold);box-shadow:0 0 0 4px rgba(201,163,85,0.2)}
-.tl-year{font-size:0.75rem;font-weight:600;color:var(--brown-500);letter-spacing:0.05em;margin-bottom:var(--sp-2)}
-.tl-item h3{font-size:1rem;font-family:var(--font-body);font-weight:600;color:var(--brown-900);margin-bottom:var(--sp-2)}
-.tl-item p{font-size:0.88rem;color:var(--text-muted);line-height:1.7}
-
-/* ========== TEAM ========== */
-.team{background:var(--white)}
-.team-grid{
-  display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-4);
-}
-@media(min-width:640px){.team-grid{grid-template-columns:repeat(3,1fr)}}
-@media(min-width:1024px){.team-grid{grid-template-columns:repeat(4,1fr)}}
-
-.team-card{
-  text-align:center;
-  padding:var(--sp-6) var(--sp-4);
-  border-radius:var(--radius-lg);
-  transition:all 300ms var(--ease-standard);
-}
-.team-card:hover{background:var(--brown-50)}
-.team-avatar{
-  width:72px;height:72px;border-radius:50%;
-  background:linear-gradient(135deg,var(--brown-200),var(--brown-300));
-  margin:0 auto var(--sp-4);
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-display);font-size:1.4rem;font-weight:600;color:var(--brown-700);
-}
-.team-card h3{font-size:0.9rem;font-family:var(--font-body);font-weight:600;color:var(--brown-900);margin-bottom:var(--sp-1)}
-.team-card .role{font-size:0.78rem;color:var(--text-muted);line-height:1.5}
-.team-card .org{font-size:0.7rem;color:var(--brown-400);margin-top:var(--sp-1)}
-
-/* ========== PARTNERS ========== */
-.partners{background:var(--cream)}
-.partner-grid{
-  display:grid;grid-template-columns:1fr;gap:var(--sp-5);
-}
-@media(min-width:768px){.partner-grid{grid-template-columns:repeat(2,1fr)}}
-
-.partner-card{
-  padding:var(--sp-7);
-  border-radius:var(--radius-xl);
-  background:var(--white);
-  border:1px solid var(--brown-100);
-  transition:all 300ms var(--ease-standard);
-}
-.partner-card:hover{border-color:var(--brown-200);box-shadow:var(--shadow-md)}
-.partner-flag{
-  width:48px;height:48px;border-radius:var(--radius-md);
-  background:var(--brown-100);
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.8rem;margin-bottom:var(--sp-5);
-}
-.partner-card h3{font-size:1.1rem;color:var(--brown-900);margin-bottom:var(--sp-3);font-family:var(--font-body);font-weight:600}
-.partner-card p{font-size:0.88rem;color:var(--text-muted);line-height:1.7;margin-bottom:var(--sp-5)}
-.partner-orgs{display:flex;flex-wrap:wrap;gap:var(--sp-2)}
-.partner-org{
-  font-size:0.75rem;font-weight:500;
-  padding:var(--sp-1) var(--sp-3);
-  border-radius:50px;
-  background:var(--brown-50);color:var(--brown-600);
-  border:1px solid var(--brown-100);
-}
-
-/* ========== IMPACT ========== */
-.impact{background:var(--white)}
-.impact-grid{
-  display:grid;grid-template-columns:1fr;gap:var(--sp-4);
-}
-@media(min-width:640px){.impact-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1024px){.impact-grid{grid-template-columns:repeat(3,1fr)}}
-
-.impact-card{
-  padding:var(--sp-6);
-  border-radius:var(--radius-lg);
-  border:1px solid var(--brown-100);
-  background:var(--cream);
-  transition:all 300ms var(--ease-standard);
-}
-.impact-card:hover{border-color:var(--brown-200);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
-.impact-icon{
-  width:40px;height:40px;border-radius:var(--radius-sm);
-  background:var(--green-light);color:var(--green);
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:var(--sp-4);
-}
-.impact-icon svg{width:20px;height:20px}
-.impact-card h3{font-size:0.95rem;font-family:var(--font-body);font-weight:600;color:var(--brown-900);margin-bottom:var(--sp-3)}
-.impact-card p{font-size:0.85rem;color:var(--text-muted);line-height:1.7}
-
-/* ========== GALLERY ========== */
-.gallery{background:var(--cream)}
-.gallery-grid{
-  display:grid;grid-template-columns:1fr;gap:var(--sp-4);
-}
-@media(min-width:640px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1024px){.gallery-grid{grid-template-columns:repeat(3,1fr)}}
-
-.gallery-item{
-  aspect-ratio:4/3;
-  border-radius:var(--radius-lg);
-  overflow:hidden;position:relative;
-  background:linear-gradient(135deg,var(--brown-200),var(--brown-300));
-  cursor:pointer;
-}
-.gallery-item-inner{
-  width:100%;height:100%;
-  display:flex;align-items:center;justify-content:center;
-  padding:var(--sp-5);
-  transition:transform 500ms var(--ease-standard);
-}
-.gallery-item:hover .gallery-item-inner{transform:scale(1.03)}
-.gallery-item svg{width:48px;height:48px;color:var(--brown-600);opacity:0.4}
-.gallery-caption{
-  position:absolute;bottom:0;left:0;right:0;
-  padding:var(--sp-5) var(--sp-4) var(--sp-4);
-  background:linear-gradient(0deg,rgba(36,26,16,0.7) 0%,transparent 100%);
-  color:var(--white);font-size:0.82rem;font-weight:500;
-}
-
-/* ========== CONTACT ========== */
-.contact{
-  background:var(--brown-950);color:var(--white);
-  position:relative;overflow:hidden;
-}
-.contact::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 50% 60% at 30% 70%, rgba(201,163,85,0.06) 0%, transparent 60%);
-  pointer-events:none;
-}
-.contact .section-label{color:var(--gold)}
-.contact .section-title{color:var(--white)}
-.contact .section-desc{color:rgba(255,255,255,0.5)}
-
-.contact-grid{
-  display:grid;grid-template-columns:1fr;gap:var(--sp-7);
-}
-@media(min-width:768px){.contact-grid{grid-template-columns:1fr 1fr}}
-
-.contact-info{display:flex;flex-direction:column;gap:var(--sp-5)}
-.ci-item{display:flex;align-items:flex-start;gap:var(--sp-4)}
-.ci-icon{
-  width:40px;height:40px;border-radius:var(--radius-sm);
-  background:rgba(255,255,255,0.08);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  color:var(--gold);
-}
-.ci-icon svg{width:18px;height:18px}
-.ci-label{font-size:0.75rem;font-weight:600;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:var(--sp-1)}
-.ci-value{font-size:0.9rem;color:rgba(255,255,255,0.8);line-height:1.6}
-
-.contact-form{
-  display:flex;flex-direction:column;gap:var(--sp-4);
-}
-.form-group{display:flex;flex-direction:column;gap:var(--sp-2)}
-.form-group label{font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.06em}
-.form-group input,.form-group textarea{
-  background:rgba(255,255,255,0.06);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:var(--radius-sm);
-  padding:var(--sp-3) var(--sp-4);
-  color:var(--white);font-family:var(--font-body);font-size:0.9rem;
-  transition:border-color 200ms var(--ease-standard);
-  outline:none;
-}
-.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,0.25)}
-.form-group input:focus,.form-group textarea:focus{border-color:var(--gold)}
+/* ===== CONTACT ===== */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:50px;align-items:start}
+.contact-info{display:grid;gap:24px}
+.contact-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:28px;display:flex;gap:16px;transition:all .4s}
+.contact-card:hover{background:rgba(255,255,255,.08);border-color:rgba(212,160,84,.3);transform:translateX(6px)}
+.contact-card-icon{width:52px;height:52px;border-radius:14px;background:rgba(212,160,84,.15);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.contact-card h4{font-size:14px;color:rgba(255,255,255,.5);margin-bottom:6px;font-weight:500}
+.contact-card p{font-size:16px;color:#fff;font-weight:500}
+.contact-form{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:40px}
+.contact-form h3{font-family:var(--font-display);font-size:24px;font-weight:700;color:#fff;margin-bottom:24px}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:13px;color:rgba(255,255,255,.5);margin-bottom:8px;font-weight:500}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:14px 18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;color:#fff;font-size:15px;font-family:var(--font-body);transition:border-color .3s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--gold)}
 .form-group textarea{resize:vertical;min-height:120px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4)}
-@media(max-width:480px){.form-row{grid-template-columns:1fr}}
+.form-group select option{background:var(--brown-900);color:#fff}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.btn-submit{width:100%;padding:16px;background:linear-gradient(135deg,var(--gold),var(--brown-400));color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:600;cursor:pointer;transition:all .3s;font-family:var(--font-body)}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(212,160,84,.4)}
 
-/* ========== FOOTER ========== */
-.footer{
-  background:var(--brown-950);
-  border-top:1px solid rgba(255,255,255,0.06);
-  padding-block:var(--sp-7);
-  color:rgba(255,255,255,0.4);
-}
-.footer-inner{
-  display:flex;flex-direction:column;gap:var(--sp-5);
-  align-items:center;text-align:center;
-}
-@media(min-width:768px){.footer-inner{flex-direction:row;justify-content:space-between;text-align:left}}
-.footer-brand{display:flex;align-items:center;gap:var(--sp-3)}
-.footer-brand-icon{
-  width:32px;height:32px;border-radius:var(--radius-sm);
-  background:rgba(255,255,255,0.08);color:var(--gold);
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-display);font-weight:700;font-size:0.8rem;
-}
-.footer-brand span{font-family:var(--font-display);font-size:1rem;font-weight:600;color:rgba(255,255,255,0.6)}
-.footer-copy{font-size:0.78rem;line-height:1.6}
-.footer-links{display:flex;gap:var(--sp-5);flex-wrap:wrap;justify-content:center}
-.footer-links a{font-size:0.82rem;color:rgba(255,255,255,0.4);transition:color 200ms var(--ease-standard)}
-.footer-links a:hover{color:var(--gold)}
+/* ===== FOOTER ===== */
+.footer{background:var(--brown-950);border-top:1px solid rgba(255,255,255,.05);padding:60px 0 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px}
+.footer-brand p{color:rgba(255,255,255,.5);font-size:14px;line-height:1.8;margin-top:16px;max-width:320px}
+.footer-col h4{font-family:var(--font-display);font-size:16px;font-weight:600;color:#fff;margin-bottom:20px}
+.footer-col a{display:block;color:rgba(255,255,255,.5);font-size:14px;margin-bottom:10px;transition:color .3s}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center}
+.footer-bottom p{color:rgba(255,255,255,.35);font-size:13px}
+.footer-socials{display:flex;gap:12px}
+.footer-social{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;transition:all .3s;color:rgba(255,255,255,.5);font-size:16px}
+.footer-social:hover{background:var(--gold);border-color:var(--gold);color:#fff;transform:translateY(-3px)}
 
-/* ========== SCROLL REVEAL ========== */
-.reveal{
-  opacity:0;
-  transform:translateY(20px);
-  transition:opacity 600ms var(--ease-decel), transform 600ms var(--ease-decel);
-}
-.reveal.visible{
-  opacity:1;
-  transform:translateY(0);
-}
-.reveal-stagger .reveal{transition-delay:calc(var(--i,0) * 80ms)}
+/* ===== FLOATING DECORATIONS ===== */
+.float-decor{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
 
-/* ========== PREFERS REDUCED MOTION ========== */
-@media(prefers-reduced-motion:reduce){
-  .reveal{opacity:1;transform:none;transition:none}
-  *{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+/* ===== COUNTER ANIMATION ===== */
+.count-up{font-variant-numeric:tabular-nums}
+
+/* ===== KEY FACTS BANNER ===== */
+.facts-banner{background:linear-gradient(135deg,var(--brown-800),var(--brown-900));padding:40px 0;position:relative;overflow:hidden}
+.facts-banner::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4a054' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.facts-inner{display:grid;grid-template-columns:repeat(5,1fr);gap:30px;text-align:center}
+.fact-item{position:relative}
+.fact-item:not(:last-child)::after{content:'';position:absolute;right:0;top:10%;height:80%;width:1px;background:rgba(212,160,84,.2)}
+.fact-num{font-family:var(--font-display);font-size:38px;font-weight:800;color:var(--gold);line-height:1}
+.fact-label{font-size:13px;color:rgba(255,255,255,.55);margin-top:8px;font-weight:500}
+
+/* ===== MOBILE ===== */
+.mobile-menu{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(26,16,10,.98);backdrop-filter:blur(20px);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+.mobile-menu.active{display:flex}
+.mobile-menu a{color:#fff;font-size:20px;font-family:var(--font-display);font-weight:600;transition:color .3s}
+.mobile-menu a:hover{color:var(--gold)}
+.mobile-close{position:absolute;top:24px;right:24px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:28px;cursor:pointer;background:rgba(255,255,255,.08);border-radius:10px}
+
+@media(max-width:1024px){
+.hero-content{grid-template-columns:1fr;text-align:center}
+.hero-sub{margin:0 auto 36px}
+.hero-btns{justify-content:center}
+.hero-stats{grid-template-columns:repeat(4,1fr);max-width:600px;margin:40px auto 0}
+.overview-grid,.team-header,.partners-intro,.contact-wrap{grid-template-columns:1fr}
+.obj-grid,.streams-grid{grid-template-columns:repeat(2,1fr)}
+.impact-grid{grid-template-columns:repeat(2,1fr)}
+.team-grid{grid-template-columns:repeat(3,1fr)}
+.facts-inner{grid-template-columns:repeat(3,1fr);gap:20px}
+.fact-item:not(:last-child)::after{display:none}
+.footer-grid{grid-template-columns:repeat(2,1fr)}
+.gallery-grid{grid-template-columns:repeat(2,1fr)}
+.gallery-item:first-child{grid-column:span 2}
+}
+
+@media(max-width:768px){
+.nav-links{display:none}
+.hamburger{display:flex}
+.hero-stats{grid-template-columns:repeat(2,1fr)}
+.hero-stat-num{font-size:32px}
+.obj-grid,.streams-grid,.impact-grid{grid-template-columns:1fr}
+.team-grid{grid-template-columns:repeat(2,1fr)}
+.facts-inner{grid-template-columns:repeat(2,1fr)}
+.gallery-grid{grid-template-columns:1fr}
+.gallery-item:first-child{grid-column:span 1}
+.form-row{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr}
+.footer-bottom{flex-direction:column;gap:16px;text-align:center}
+section{padding:70px 0}
+.timeline{padding-left:30px}
+.timeline::before{left:10px}
+.timeline-dot{left:-31px}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ===== NAVBAR ===== -->
 <nav class="nav" id="nav">
-  <div class="container nav-inner">
-    <a href="#" class="nav-logo">
-      <div class="nav-logo-icon">V4</div>
-      <div class="nav-logo-text">VALTIP4<small>Phase 4 Project</small></div>
-    </a>
-    <div class="nav-links">
-      <a href="#overview">Overview</a>
-      <a href="#objectives">Objectives</a>
-      <a href="#activities">Activities</a>
-      <a href="#timeline">Timeline</a>
-      <a href="#team">Team</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact" class="btn btn-primary nav-cta">Contact Us</a>
-    </div>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+<div class="nav-inner">
+<a href="#" class="nav-logo">
+<div class="nav-logo-icon">V4</div>
+<div class="nav-logo-text">VALTIP<span>4</span></div>
+</a>
+<div class="nav-links">
+<a href="#overview">Overview</a>
+<a href="#objectives">Objectives</a>
+<a href="#research">Research</a>
+<a href="#timeline">Timeline</a>
+<a href="#team">Team</a>
+<a href="#partners">Partners</a>
+<a href="#impact">Impact</a>
+<a href="#gallery">Gallery</a>
+<a href="#contact" class="nav-cta">Contact Us</a>
+</div>
+<div class="hamburger" onclick="toggleMobile()">
+<span></span><span></span><span></span>
+</div>
+</div>
 </nav>
 
-<!-- MOBILE MENU -->
+<!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#overview" onclick="closeMenu()">Overview</a>
-  <a href="#objectives" onclick="closeMenu()">Objectives</a>
-  <a href="#activities" onclick="closeMenu()">Activities</a>
-  <a href="#timeline" onclick="closeMenu()">Timeline</a>
-  <a href="#team" onclick="closeMenu()">Team</a>
-  <a href="#gallery" onclick="closeMenu()">Gallery</a>
-  <a href="#contact" class="btn btn-primary" onclick="closeMenu()">Contact Us</a>
+<div class="mobile-close" onclick="toggleMobile()">&times;</div>
+<a href="#overview" onclick="toggleMobile()">Overview</a>
+<a href="#objectives" onclick="toggleMobile()">Objectives</a>
+<a href="#research" onclick="toggleMobile()">Research</a>
+<a href="#timeline" onclick="toggleMobile()">Timeline</a>
+<a href="#team" onclick="toggleMobile()">Team</a>
+<a href="#partners" onclick="toggleMobile()">Partners</a>
+<a href="#impact" onclick="toggleMobile()">Impact</a>
+<a href="#gallery" onclick="toggleMobile()">Gallery</a>
+<a href="#contact" onclick="toggleMobile()">Contact Us</a>
 </div>
 
-<!-- HERO -->
+<!-- ===== HERO ===== -->
 <section class="hero">
-  <div class="container hero-inner">
-    <div class="hero-label">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12l3 3 5-5"/></svg>
-      Funded by ACIAR
-    </div>
-    <h1>Advancing <em>Enhanced Wood</em> Manufacturing in Laos & Australia</h1>
-    <p class="hero-desc">VALTIP4 is a collaborative research project focused on sustainable expansion of forestry industries, building capacity in wood processing and value chain development across Southeast Asia and Oceania.</p>
-    <div class="hero-btns">
-      <a href="#overview" class="btn btn-gold btn-lg">Learn More</a>
-      <a href="#contact" class="btn btn-white btn-lg">Contact Us</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-value">4</div>
-        <div class="stat-label">Project Phases</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">5 yrs</div>
-        <div class="stat-label">Duration</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">$3.1M</div>
-        <div class="stat-label">Total Budget</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">2</div>
-        <div class="stat-label">Partner Countries</div>
-      </div>
-    </div>
-  </div>
+<div class="hero-bg">
+<img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1600&q=80" alt="Lush tropical forest" loading="eager">
+</div>
+<div class="hero-overlay"></div>
+<div class="hero-particles" id="particles"></div>
+<div class="hero-content">
+<div>
+<div class="hero-badge rv">
+<div class="hero-badge-dot"></div>
+<span>ACIAR Project FST/2023/153</span>
+</div>
+<h1 class="rv">Sustainable <span class="highlight">Forestry</span> & Wood Processing in <span class="highlight">Laos</span> and Australia</h1>
+<p class="hero-sub rv">Expanding plantation forestry and transforming wood processing industries to create economic growth, environmental sustainability, and social equity across the Lao PDR and Australian partnership.</p>
+<div class="hero-btns rv">
+<a href="#overview" class="btn-primary">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+Learn More
+</a>
+<a href="#contact" class="btn-secondary">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+Contact Us
+</a>
+</div>
+</div>
+<div class="hero-stats">
+<div class="hero-stat rv" style="transition-delay:.1s">
+<div class="hero-stat-num count-up" data-target="5">0</div>
+<div class="hero-stat-label">Year Project</div>
+</div>
+<div class="hero-stat rv" style="transition-delay:.2s">
+<div class="hero-stat-num count-up" data-target="47">0</div>
+<div class="hero-stat-label">Researchers</div>
+</div>
+<div class="hero-stat rv" style="transition-delay:.3s">
+<div class="hero-stat-num count-up" data-target="7">0</div>
+<div class="hero-stat-label">Partner Orgs</div>
+</div>
+<div class="hero-stat rv" style="transition-delay:.4s">
+<div class="hero-stat-num count-up" data-target="6">0</div>
+<div class="hero-stat-label">Research Streams</div>
+</div>
+</div>
+</div>
 </section>
 
-<!-- OVERVIEW -->
-<section class="section overview" id="overview">
-  <div class="container">
-    <div class="overview-grid">
-      <div class="overview-visual reveal">
-        <div class="overview-visual-inner">
-          <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.5">
-            <rect x="10" y="50" width="20" height="60" rx="2"/>
-            <rect x="35" y="30" width="20" height="80" rx="2"/>
-            <rect x="60" y="40" width="20" height="70" rx="2"/>
-            <rect x="85" y="20" width="20" height="90" rx="2"/>
-            <path d="M5 115h110" stroke-dasharray="4 4"/>
-          </svg>
-        </div>
-        <div class="overview-card top">
-          <div class="overview-card-icon" style="background:var(--green-light);color:var(--green)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <div>
-            <div class="overview-card-title">Value Chain</div>
-            <div class="overview-card-sub">End-to-end development</div>
-          </div>
-        </div>
-        <div class="overview-card bottom">
-          <div class="overview-card-icon" style="background:var(--brown-100);color:var(--brown-600)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <div>
-            <div class="overview-card-title">Cross-Border</div>
-            <div class="overview-card-sub">Laos & Australia</div>
-          </div>
-        </div>
-      </div>
-      <div class="overview-content reveal">
-        <div class="section-label">About the Project</div>
-        <h3>Strengthening Forestry Industries Through Research & Collaboration</h3>
-        <p>VALTIP4 (Value-Adding to Lao Timber Products, Phase 4) builds on over 15 years of collaborative forestry research between Laos and Australia. The project targets sustainable wood manufacturing practices that benefit both communities and industry.</p>
-        <p>Working with smallholder farmers, timber processors, and government agencies, VALTIP4 develops scalable solutions for plantation forestry and wood product quality improvement.</p>
-        <div class="overview-highlights">
-          <div class="hi-item">
-            <div class="hi-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-            </div>
-            <div class="hi-text">Research-driven innovation in wood processing</div>
-          </div>
-          <div class="hi-item">
-            <div class="hi-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <div class="hi-text">Community empowerment & capacity building</div>
-          </div>
-          <div class="hi-item">
-            <div class="hi-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <div class="hi-text">Sustainable & environmentally responsible</div>
-          </div>
-          <div class="hi-item">
-            <div class="hi-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            </div>
-            <div class="hi-text">International knowledge exchange</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- ===== FACTS BANNER ===== -->
+<div class="facts-banner">
+<div class="container">
+<div class="facts-inner">
+<div class="fact-item rv">
+<div class="fact-num">2025</div>
+<div class="fact-label">Project Start</div>
+</div>
+<div class="fact-item rv" style="transition-delay:.1s">
+<div class="fact-num">2030</div>
+<div class="fact-label">Project End</div>
+</div>
+<div class="fact-item rv" style="transition-delay:.2s">
+<div class="fact-num">28%</div>
+<div class="fact-label">Female Researchers</div>
+</div>
+<div class="fact-item rv" style="transition-delay:.3s">
+<div class="fact-num">300K</div>
+<div class="fact-label">Hectares Rubber</div>
+</div>
+<div class="fact-item rv" style="transition-delay:.4s">
+<div class="fact-num">15+</div>
+<div class="fact-label">Years ACIAR in Laos</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ===== OVERVIEW ===== -->
+<section id="overview" class="section-alt">
+<div class="container">
+<div class="section-label rv">About the Project</div>
+<div class="section-title rv">Transforming <span class="gold">Plantation Forestry</span> for a Sustainable Future</div>
+<div class="overview-grid">
+<div class="overview-img rv-left">
+<img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=900&q=80" alt="Wood processing facility">
+<div class="overview-img-overlay">
+<p>Rubberwood processing operations in Southeast Asia</p>
+</div>
+</div>
+<div class="overview-text rv-right">
+<p>Laos is a Least Developed Country with nearly 25% of its population below the poverty line. While 70% of the Lao population works in agriculture, the Government of Laos has identified plantation forestry and wood processing as key opportunities to alleviate poverty, increase tree cover, and meet climate change objectives.</p>
+<p>Rubber plantations represent approximately 58% of Lao plantation area, covering around 300,000 hectares. The majority are expected to become senescent by 2030. Currently, this timber is often wasted or burned as low grade fuel. VALTIP4 works to convert this valuable resource into high value engineered wood products for domestic and export markets.</p>
+<p>Global demand for wood products is projected to quadruple over the next 30 years. Laos is well positioned to expand its forestry and forest products manufacturing sectors, capturing value adding market opportunities that neighboring countries like Vietnam and Thailand have already seized.</p>
+<div class="overview-highlights">
+<div class="overview-hl">
+<div class="overview-hl-num">58%</div>
+<div class="overview-hl-label">Rubber Plantations</div>
+</div>
+<div class="overview-hl">
+<div class="overview-hl-num">70%</div>
+<div class="overview-hl-label">Agri Workforce</div>
+</div>
+<div class="overview-hl">
+<div class="overview-hl-num">4x</div>
+<div class="overview-hl-label">Demand Growth</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 
-<!-- OBJECTIVES -->
-<section class="section objectives" id="objectives">
-  <div class="container">
-    <div class="section-header center reveal">
-      <div class="section-label">Project Goals</div>
-      <h2 class="section-title">Core Objectives</h2>
-      <p class="section-desc">Six strategic objectives guide our research and implementation across both partner countries.</p>
-    </div>
-    <div class="obj-grid reveal-stagger">
-      <div class="obj-card reveal" style="--i:0">
-        <div class="obj-num">01</div>
-        <h3>Enhance Plantation Timber Quality</h3>
-        <p>Improve silvicultural practices and genetics to increase the quality and commercial value of plantation grown timber species.</p>
-      </div>
-      <div class="obj-card reveal" style="--i:1">
-        <div class="obj-num">02</div>
-        <h3>Strengthen Processing Capacity</h3>
-        <p>Build technical skills and infrastructure for efficient wood processing, kiln drying, and product manufacturing.</p>
-      </div>
-      <div class="obj-card reveal" style="--i:2">
-        <div class="obj-num">03</div>
-        <h3>Develop Market Linkages</h3>
-        <p>Create sustainable market pathways connecting smallholder producers with domestic and regional timber markets.</p>
-      </div>
-      <div class="obj-card reveal" style="--i:3">
-        <div class="obj-num">04</div>
-        <h3>Support Policy Frameworks</h3>
-        <p>Provide evidence-based recommendations to strengthen forestry policy, regulations, and institutional governance.</p>
-      </div>
-      <div class="obj-card reveal" style="--i:4">
-        <div class="obj-num">05</div>
-        <h3>Build Research Capacity</h3>
-        <p>Develop local research expertise through training, mentorship, and collaborative research programs with Australian institutions.</p>
-      </div>
-      <div class="obj-card reveal" style="--i:5">
-        <div class="obj-num">06</div>
-        <h3>Empower Livelihoods</h3>
-        <p>Increase income and economic resilience for smallholder farming communities through diversified forestry enterprises.</p>
-      </div>
-    </div>
-  </div>
+<!-- ===== OBJECTIVES ===== -->
+<section id="objectives">
+<div class="container">
+<div style="text-align:center;max-width:700px;margin:0 auto">
+<div class="section-label rv" style="justify-content:center">Project Objectives</div>
+<div class="section-title rv" style="text-align:center">Six Strategic <span class="gold">Objectives</span> Driving Change</div>
+<p class="section-desc rv" style="margin:0 auto">Our multi disciplinary approach addresses policy, technology, markets, gender equity, and workplace safety to create lasting impact across the forestry value chain.</p>
+</div>
+<div class="obj-grid">
+<div class="obj-card rv" style="transition-delay:.05s">
+<div class="obj-num">01</div>
+<div class="obj-icon" style="background:rgba(15,110,86,.1)">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+</div>
+<h3>Policy & Governance</h3>
+<p>Strengthen the enabling environment for plantation expansion. Support smallholders and MSMEs through improved policy, regulation, and industry frameworks.</p>
+</div>
+<div class="obj-card rv" style="transition-delay:.1s">
+<div class="obj-num">02</div>
+<div class="obj-icon" style="background:rgba(83,74,183,.1)">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+</div>
+<h3>WTRC Self Sufficiency</h3>
+<p>Build the Wood Technical Research Centre at NUoL into a fully self supporting, certified, fee for service testing and training facility.</p>
+</div>
+<div class="obj-card rv" style="transition-delay:.15s">
+<div class="obj-num">03</div>
+<div class="obj-icon" style="background:rgba(29,158,117,.1)">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+</div>
+<h3>Timber R&D</h3>
+<p>Address technical barriers in wood product recoveries, optimise rubberwood processing, and develop bio based adhesives and circular economy practices.</p>
+</div>
+<div class="obj-card rv" style="transition-delay:.2s">
+<div class="obj-num">04</div>
+<div class="obj-icon" style="background:rgba(186,117,23,.1)">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+</div>
+<h3>Markets & Supply Chains</h3>
+<p>Build market intelligence and forecasting of global and regional demand trends to identify export and domestic opportunities matched to Lao resources.</p>
+</div>
+<div class="obj-card rv" style="transition-delay:.25s">
+<div class="obj-num">05</div>
+<div class="obj-icon" style="background:rgba(216,90,48,.1)">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D85A30" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+</div>
+<h3>Gender & Social Inclusion</h3>
+<p>Examine the effects of industry development on female livelihoods, particularly for ethnic minority women, and improve equity across the supply chain.</p>
+</div>
+<div class="obj-card rv" style="transition-delay:.3s">
+<div class="obj-num">06</div>
+<div class="obj-icon" style="background:rgba(59,109,17,.1)">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3B6D11" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+</div>
+<h3>Occupational Health & Safety</h3>
+<p>Establish routine industrial hygiene and OH&S protocols across forest and wood processing industries, addressing significant safety gaps.</p>
+</div>
+</div>
+</div>
 </section>
 
-<!-- KEY ACTIVITIES -->
-<section class="section activities" id="activities">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">What We Do</div>
-      <h2 class="section-title">Key Activities</h2>
-      <p class="section-desc">Our work spans research, training, policy support, and direct community engagement across multiple regions.</p>
-    </div>
-    <div class="act-grid reveal-stagger">
-      <div class="act-card reveal" style="--i:0">
-        <div class="act-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-        </div>
-        <h3>Silvicultural Research</h3>
-        <p>Field trials and genetic improvement programs for teak, eucalyptus, and other priority plantation species in Laos.</p>
-      </div>
-      <div class="act-card reveal" style="--i:1">
-        <div class="act-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        </div>
-        <h3>Wood Processing Training</h3>
-        <p>Hands-on workshops in sawing optimization, kiln drying techniques, and quality grading for local processors.</p>
-      </div>
-      <div class="act-card reveal" style="--i:2">
-        <div class="act-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-        </div>
-        <h3>Market Analysis</h3>
-        <p>Comprehensive studies of domestic and export timber markets, pricing structures, and value chain opportunities.</p>
-      </div>
-      <div class="act-card reveal" style="--i:3">
-        <div class="act-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h3>Community Engagement</h3>
-        <p>Farmer field schools, extension services, and participatory research involving over 500 smallholder families.</p>
-      </div>
-      <div class="act-card reveal" style="--i:4">
-        <div class="act-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
-        </div>
-        <h3>Policy Development</h3>
-        <p>Working papers, policy briefs, and stakeholder consultations supporting evidence-based forestry governance.</p>
-      </div>
-      <div class="act-card reveal" style="--i:5">
-        <div class="act-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-        </div>
-        <h3>Knowledge Sharing</h3>
-        <p>International conferences, published research papers, and cross-institutional learning exchanges.</p>
-      </div>
-    </div>
-  </div>
+<!-- ===== RESEARCH STREAMS ===== -->
+<section id="research" class="section-dark" style="position:relative;overflow:hidden">
+<div class="float-decor" style="width:400px;height:400px;background:var(--gold);opacity:.04;top:-200px;right:-100px"></div>
+<div class="float-decor" style="width:300px;height:300px;background:var(--green-500);opacity:.04;bottom:-150px;left:-100px"></div>
+<div class="container" style="position:relative;z-index:1">
+<div style="text-align:center;max-width:700px;margin:0 auto">
+<div class="section-label rv" style="justify-content:center">Research Streams</div>
+<div class="section-title rv" style="text-align:center">Six Integrated <span class="gold">Research Streams</span></div>
+<p class="section-desc rv" style="margin:0 auto">A comprehensive multi disciplinary research program spanning policy, technology, markets, social inclusion, and workplace safety.</p>
+</div>
+<div class="streams-grid">
+<div class="stream-card rv" style="--stream-color:#0F6E56;transition-delay:.05s">
+<div class="stream-num">Stream 01</div>
+<div class="stream-icon-wrap">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+</div>
+<h3>Policy, Governance & Industry</h3>
+<p>Strengthening policy frameworks and institutional capacity for sustainable forest industry expansion in Laos. Supporting smallholders and MSMEs through improved regulation.</p>
+<span class="stream-tag">Led by Dept. of Forestry & ANU</span>
+</div>
+<div class="stream-card rv" style="--stream-color:#534AB7;transition-delay:.1s">
+<div class="stream-num">Stream 02</div>
+<div class="stream-icon-wrap">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+</div>
+<h3>WTRC at NUoL</h3>
+<p>Building the Wood Technical Research Centre into a fully self supporting, certified testing and training facility for Lao and regional forest industries.</p>
+<span class="stream-tag">National University of Laos</span>
+</div>
+<div class="stream-card rv" style="--stream-color:#1D9E75;transition-delay:.15s">
+<div class="stream-num">Stream 03</div>
+<div class="stream-icon-wrap">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+</div>
+<h3>Timber R&D & Circular Economy</h3>
+<p>Addressing technical barriers in wood product recoveries with focus on senescent rubberwood, bio based adhesives, and circular economy practices.</p>
+<span class="stream-tag">Griffith Uni & Melbourne</span>
+</div>
+<div class="stream-card rv" style="--stream-color:#BA7517;transition-delay:.2s">
+<div class="stream-num">Stream 04</div>
+<div class="stream-icon-wrap">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+</div>
+<h3>Supply Chains & Markets</h3>
+<p>Building market intelligence and forecasting of global and regional trends. Identifying export and domestic opportunities for Lao plantation resources.</p>
+<span class="stream-tag">Salwood Asia Pacific</span>
+</div>
+<div class="stream-card rv" style="--stream-color:#D85A30;transition-delay:.25s">
+<div class="stream-num">Stream 05</div>
+<div class="stream-icon-wrap">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D85A30" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+</div>
+<h3>Gender & Social Inclusion</h3>
+<p>Examining gender effects of industry development to improve equity across the supply chain, with focus on ethnic minority women in Laos.</p>
+<span class="stream-tag">NUoL Social Sciences</span>
+</div>
+<div class="stream-card rv" style="--stream-color:#3B6D11;transition-delay:.3s">
+<div class="stream-num">Stream 06</div>
+<div class="stream-icon-wrap">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#3B6D11" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+</div>
+<h3>Occupational Health & Safety</h3>
+<p>Establishing routine OH&S protocols in forest and wood processing industries. Exchange visits with Australian regulators and on site training programs.</p>
+<span class="stream-tag">DPI Queensland</span>
+</div>
+</div>
+</div>
 </section>
 
-<!-- TIMEFRAME -->
-<section class="section timeframe" id="timeframe">
-  <div class="container">
-    <div class="section-header center reveal">
-      <div class="section-label">Project Phases</div>
-      <h2 class="section-title">Project Timeframe</h2>
-      <p class="section-desc">Four phases spanning over 15 years of continuous research and development.</p>
-    </div>
-    <div class="tf-grid reveal-stagger">
-      <div class="tf-card reveal" style="--i:0">
-        <div class="tf-phase">Phase 1</div>
-        <div class="tf-years">2007 &ndash; 2011</div>
-        <h3>Foundation Research</h3>
-        <p>Initial assessment of plantation timber quality, processing capabilities, and market potential in Lao PDR.</p>
-      </div>
-      <div class="tf-card reveal" style="--i:1">
-        <div class="tf-phase">Phase 2</div>
-        <div class="tf-years">2012 &ndash; 2016</div>
-        <h3>Scale-Up & Training</h3>
-        <p>Expanded research trials, introduced kiln drying technology, and established farmer training networks.</p>
-      </div>
-      <div class="tf-card reveal" style="--i:2">
-        <div class="tf-phase">Phase 3</div>
-        <div class="tf-years">2017 &ndash; 2021</div>
-        <h3>Market Integration</h3>
-        <p>Connected producers to markets, developed grading standards, and strengthened policy engagement.</p>
-      </div>
-      <div class="tf-card reveal" style="--i:3">
-        <div class="tf-phase">Phase 4</div>
-        <div class="tf-years">2022 &ndash; 2027</div>
-        <h3>Sustainability & Growth</h3>
-        <p>Scaling proven approaches, deepening institutional partnerships, and ensuring long-term industry viability.</p>
-      </div>
-    </div>
-  </div>
+<!-- ===== TIMELINE ===== -->
+<section id="timeline" class="section-alt">
+<div class="container">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start">
+<div>
+<div class="section-label rv">Project Phases</div>
+<div class="section-title rv">Five Year <span class="gold">Roadmap</span></div>
+<p class="section-desc rv">From inception and baseline studies through to completion and handover, each phase builds systematically toward lasting impact and institutional sustainability.</p>
+<div style="margin-top:30px" class="rv">
+<img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=800&q=80" alt="Forest canopy" style="border-radius:20px;height:300px;width:100%;object-fit:cover;box-shadow:0 20px 50px rgba(0,0,0,.12)">
+</div>
+</div>
+<div class="timeline">
+<div class="timeline-item rv">
+<div class="timeline-dot"></div>
+<div class="timeline-year">YEAR 1 — July 2025 to June 2026</div>
+<h3>Inception & Baseline</h3>
+<p>Establish project steering committee, recruit in country manager, conduct inception workshop, and develop full M&E framework with baseline data collection.</p>
+<div class="timeline-tags">
+<span class="timeline-tag">OH&S Review</span>
+<span class="timeline-tag">Market Intelligence</span>
+<span class="timeline-tag">WTRC SWOT</span>
+<span class="timeline-tag">Policy Forums</span>
+</div>
+</div>
+<div class="timeline-item rv">
+<div class="timeline-dot"></div>
+<div class="timeline-year">YEAR 2 — July 2026 to June 2027</div>
+<h3>Research Build Up</h3>
+<p>Scale up in country research, begin plantation resource characterisation studies focusing on rubberwood. Deliver first WTRC business model and financial plan.</p>
+<div class="timeline-tags">
+<span class="timeline-tag">Resource Reports</span>
+<span class="timeline-tag">WTRC Business Model</span>
+<span class="timeline-tag">Export Logistics</span>
+</div>
+</div>
+<div class="timeline-item rv">
+<div class="timeline-dot"></div>
+<div class="timeline-year">YEAR 3 — July 2027 to June 2028</div>
+<h3>Mid Term & Expansion</h3>
+<p>Mid term review to assess progress. Begin EWP product testing and wood product technical trials. Intensify OH&S on site training. Gender mid term review.</p>
+<div class="timeline-tags">
+<span class="timeline-tag">EWP Trials</span>
+<span class="timeline-tag">Bio Adhesives</span>
+<span class="timeline-tag">MSME Support</span>
+</div>
+</div>
+<div class="timeline-item rv">
+<div class="timeline-dot"></div>
+<div class="timeline-year">YEAR 4 — July 2028 to June 2029</div>
+<h3>Consolidation</h3>
+<p>Consolidate research findings across all streams. Deliver second round resource characterisation and circular economy trial reports. Support WTRC self sustaining operations.</p>
+<div class="timeline-tags">
+<span class="timeline-tag">Final Reports</span>
+<span class="timeline-tag">Circular Economy</span>
+<span class="timeline-tag">Labour Study</span>
+</div>
+</div>
+<div class="timeline-item rv">
+<div class="timeline-dot"></div>
+<div class="timeline-year">YEAR 5 — July 2029 to August 2030</div>
+<h3>Completion & Handover</h3>
+<p>Finalise all technical research. Complete and commission the EWP demonstration building at NUoL. Confirm WTRC self sufficiency pathway. Final M&E evaluation.</p>
+<div class="timeline-tags">
+<span class="timeline-tag">EWP Building</span>
+<span class="timeline-tag">MSME Manuals</span>
+<span class="timeline-tag">Project Close</span>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 
-<!-- TIMELINE -->
-<section class="section timeline-sec" id="timeline">
-  <div class="container">
-    <div class="section-header center reveal">
-      <div class="section-label">Milestones</div>
-      <h2 class="section-title">Key Milestones</h2>
-      <p class="section-desc">Significant achievements throughout the project's history.</p>
-    </div>
-    <div class="timeline reveal-stagger">
-      <div class="tl-item reveal" style="--i:0">
-        <div class="tl-dot"></div>
-        <div class="tl-year">2007</div>
-        <h3>Project Launch</h3>
-        <p>ACIAR funded the first phase, establishing research partnerships between University of Melbourne and Lao institutions.</p>
-      </div>
-      <div class="tl-item reveal" style="--i:1">
-        <div class="tl-dot"></div>
-        <div class="tl-year">2010</div>
-        <h3>First Timber Grading System</h3>
-        <p>Developed and piloted a plantation timber grading system adapted for Lao PDR market conditions.</p>
-      </div>
-      <div class="tl-item reveal" style="--i:2">
-        <div class="tl-dot"></div>
-        <div class="tl-year">2014</div>
-        <h3>Kiln Drying Technology Transfer</h3>
-        <p>Introduced solar-assisted kiln drying technology to five processing facilities, improving product quality by 40%.</p>
-      </div>
-      <div class="tl-item reveal" style="--i:3">
-        <div class="tl-dot"></div>
-        <div class="tl-year">2018</div>
-        <h3>500+ Farmers Trained</h3>
-        <p>Exceeded training targets through farmer field schools, reaching over 500 smallholder families across three provinces.</p>
-      </div>
-      <div class="tl-item reveal" style="--i:4">
-        <div class="tl-dot"></div>
-        <div class="tl-year">2022</div>
-        <h3>Phase 4 Commenced</h3>
-        <p>Launched the most ambitious phase yet, focusing on industry scaling, policy integration, and long-term sustainability.</p>
-      </div>
-      <div class="tl-item active reveal" style="--i:5">
-        <div class="tl-dot"></div>
-        <div class="tl-year">2025</div>
-        <h3>Mid-Phase Review</h3>
-        <p>Comprehensive evaluation demonstrating strong progress on key indicators, with expanded scope for remaining years.</p>
-      </div>
-    </div>
-  </div>
+<!-- ===== TEAM ===== -->
+<section id="team" class="section-dark" style="position:relative;overflow:hidden">
+<div class="float-decor" style="width:500px;height:500px;background:var(--gold);opacity:.03;top:-250px;left:-200px"></div>
+<div class="container" style="position:relative;z-index:1">
+<div class="team-header">
+<div>
+<div class="section-label rv">Our Team</div>
+<div class="section-title rv"><span class="gold">47 Researchers</span> Across Two Nations</div>
+<p class="section-desc rv">A collaborative network spanning Griffith University, NUoL, ANU, University of Melbourne, DPI Queensland, Department of Forestry, and Salwood Asia Pacific.</p>
+</div>
+<div class="team-img rv-right">
+<img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="Research team collaboration">
+</div>
+</div>
+
+<h3 style="color:var(--gold);font-family:var(--font-display);font-size:20px;margin-bottom:24px;font-weight:600" class="rv">Leadership Team</h3>
+<div class="team-grid" style="margin-bottom:40px">
+<div class="team-card rv" style="transition-delay:.05s">
+<div class="team-avatar">BL</div>
+<h4>Dr Bill Leggate</h4>
+<div class="role">Project Leader</div>
+<div class="org">Griffith University</div>
+</div>
+<div class="team-card rv" style="transition-delay:.1s">
+<div class="team-avatar">ST</div>
+<h4>Sithong Thongmanivong</h4>
+<div class="role">Country Coordinator 1</div>
+<div class="org">NUoL</div>
+</div>
+<div class="team-card rv" style="transition-delay:.15s">
+<div class="team-avatar">SP</div>
+<h4>Somvang Phimmavong</h4>
+<div class="role">Country Coordinator 2</div>
+<div class="org">Dept. of Forestry</div>
+</div>
+<div class="team-card rv" style="transition-delay:.2s">
+<div class="team-avatar">SM</div>
+<h4>Stephen Midgley</h4>
+<div class="role">Market Research Lead</div>
+<div class="org">Salwood Asia Pacific</div>
+</div>
+</div>
+
+<h3 style="color:rgba(255,255,255,.6);font-family:var(--font-display);font-size:18px;margin-bottom:24px;font-weight:600" class="rv">NUoL Research Team</h3>
+<div class="team-grid" style="margin-bottom:40px">
+<div class="team-card rv"><div class="team-avatar" style="background:linear-gradient(135deg,#534AB7,#7B73D9)">KP</div><h4>Khamtan Phonetip</h4><div class="role">Wood Technologist</div><div class="org">NUoL FFS</div></div>
+<div class="team-card rv"><div class="team-avatar" style="background:linear-gradient(135deg,#534AB7,#7B73D9)">LB</div><h4>Latsamy Boupha</h4><div class="role">Wood Science</div><div class="org">NUoL FFS</div></div>
+<div class="team-card rv"><div class="team-avatar" style="background:linear-gradient(135deg,#534AB7,#7B73D9)">KS</div><h4>Khonethong Soukphaxay</h4><div class="role">Wood Technologist</div><div class="org">NUoL FFS</div></div>
+<div class="team-card rv"><div class="team-avatar" style="background:linear-gradient(135deg,#534AB7,#7B73D9)">OP</div><h4>Ong Phengbounhueang</h4><div class="role">Occupational H&S</div><div class="org">NUoL FFS</div></div>
+<div class="team-card rv"><div class="team-avatar" style="background:linear-gradient(135deg,#D85A30,#E8845F)">SV</div><h4>Souphinh Vongphachanh</h4><div class="role">Gender Analysis</div><div class="org">NUoL FSS</div></div>
+<div class="team-card rv"><div class="team-avatar" style="background:linear-gradient(135deg,#D85A30,#E8845F)">MD</div><h4>Maliphone Douangphachanh</h4><div class="role">Gender Analysis</div><div class="org">NUoL FSS</div></div>
+<div class="team-card rv"><div class="team-avatar" style="background:linear-gradient(135deg,#D85A30,#E8845F)">CP</div><h4>Champathong Phochanthilath</h4><div class="role">Gender Analysis</div><div class="org">NUoL FSS</div></div>
+<div class="team-card rv"><div class="team-avatar" style="background:linear-gradient(135deg,#534AB7,#7B73D9)">PC</div><h4>Phoutsady Chitdavong</h4><div class="role">Environmental Mgmt</div><div class="org">NUoL FFS</div></div>
+</div>
+
+<h3 style="color:rgba(255,255,255,.6);font-family:var(--font-display);font-size:18px;margin-bottom:24px;font-weight:600" class="rv">Australian University Team</h3>
+<div class="team-grid" style="margin-bottom:40px">
+<div class="team-card rv"><div class="team-avatar" style="background:linear-gradient(135deg,#1D9E75,#2BC48F)">BB</div><h4>Benoit Belleville</h4><div class="role">Processing & Manufacturing</div><div class="org">Uni of Melbourne</div></div>
+<div class="team-card rv"><div class="team-avatar" style="background:linear-gradient(135deg,#1D9E75,#2BC48F)">JF</div><h4>Johannes Fehrmann</h4><div class="role">Processing & Manufacturing</div><div class="org">Uni of Melbourne</div></div>
+<div class="team-card rv"><div class="team-avatar" style="background:linear-gradient(135deg,#3B6D11,#5A9E25)">AF</div><h4>Adam Faircloth</h4><div class="role">Processing & Lab</div><div class="org">DPI Queensland</div></div>
+<div class="team-card rv"><div class="team-avatar" style="background:linear-gradient(135deg,#0F6E56,#1A9E7A)">SL</div><h4>Stuart Ling</h4><div class="role">Social Studies Lead</div><div class="org">ANU</div></div>
+<div class="team-card rv"><div class="team-avatar" style="background:linear-gradient(135deg,#0F6E56,#1A9E7A)">SMi</div><h4>Soy Mienmany</h4><div class="role">Value Chain & Policy</div><div class="org">ANU</div></div>
+</div>
+
+<h3 style="color:rgba(255,255,255,.6);font-family:var(--font-display);font-size:18px;margin-bottom:24px;font-weight:600" class="rv">Department of Forestry Team</h3>
+<div class="team-grid">
+<div class="team-card rv"><div class="team-avatar" style="background:linear-gradient(135deg,#0F6E56,#1A9E7A)">TV</div><h4>Thoumthone Vongvisouk</h4><div class="role">Policy Research</div><div class="org">Dept. of Forestry</div></div>
+<div class="team-card rv"><div class="team-avatar" style="background:linear-gradient(135deg,#0F6E56,#1A9E7A)">XS</div><h4>Xaysompheng Sengkhamyong</h4><div class="role">Policy Research Lead</div><div class="org">Dept. of Forestry</div></div>
+<div class="team-card rv"><div class="team-avatar" style="background:linear-gradient(135deg,#0F6E56,#1A9E7A)">VP</div><h4>Viengvilay Phimmavong</h4><div class="role">Policy Research</div><div class="org">Dept. of Forestry</div></div>
+</div>
+</div>
 </section>
 
-<!-- TEAM -->
-<section class="section team" id="team">
-  <div class="container">
-    <div class="section-header center reveal">
-      <div class="section-label">Our People</div>
-      <h2 class="section-title">Team Members</h2>
-      <p class="section-desc">A multidisciplinary team of researchers, practitioners, and development specialists.</p>
-    </div>
-    <div class="team-grid reveal-stagger">
-      <div class="team-card reveal" style="--i:0">
-        <div class="team-avatar">DL</div>
-        <h3>Dr. David Lamb</h3>
-        <div class="role">Project Leader</div>
-        <div class="org">University of Melbourne</div>
-      </div>
-      <div class="team-card reveal" style="--i:1">
-        <div class="team-avatar">SP</div>
-        <h3>Dr. Sounthone Phommasane</h3>
-        <div class="role">Lao Team Leader</div>
-        <div class="org">National University of Laos</div>
-      </div>
-      <div class="team-card reveal" style="--i:2">
-        <div class="team-avatar">RM</div>
-        <h3>Dr. Robert McGavin</h3>
-        <div class="role">Wood Science Lead</div>
-        <div class="org">Dept. of Agriculture, QLD</div>
-      </div>
-      <div class="team-card reveal" style="--i:3">
-        <div class="team-avatar">KS</div>
-        <h3>Dr. Khamtan Souliyavongsa</h3>
-        <div class="role">Forestry Researcher</div>
-        <div class="org">National University of Laos</div>
-      </div>
-      <div class="team-card reveal" style="--i:4">
-        <div class="team-avatar">HB</div>
-        <h3>Dr. Henri Bailleres</h3>
-        <div class="role">Processing Specialist</div>
-        <div class="org">CSIRO, Australia</div>
-      </div>
-      <div class="team-card reveal" style="--i:5">
-        <div class="team-avatar">PN</div>
-        <h3>Phonesavanh Nouanthasing</h3>
-        <div class="role">Extension Officer</div>
-        <div class="org">Dept. of Forestry, Laos</div>
-      </div>
-      <div class="team-card reveal" style="--i:6">
-        <div class="team-avatar">AW</div>
-        <h3>Dr. Andrew Walker</h3>
-        <div class="role">Economics Advisor</div>
-        <div class="org">Australian National Univ.</div>
-      </div>
-      <div class="team-card reveal" style="--i:7">
-        <div class="team-avatar">BK</div>
-        <h3>Bounheuang Khamhoung</h3>
-        <div class="role">Community Liaison</div>
-        <div class="org">Provincial Forestry Office</div>
-      </div>
-    </div>
-  </div>
+<!-- ===== PARTNERS ===== -->
+<section id="partners" class="section-alt">
+<div class="container">
+<div style="text-align:center;max-width:700px;margin:0 auto">
+<div class="section-label rv" style="justify-content:center">Partnerships</div>
+<div class="section-title rv" style="text-align:center">Collaborative <span class="gold">Network</span></div>
+<p class="section-desc rv" style="margin:0 auto">A broad coalition of government agencies, universities, industry associations, and international organisations working together for sustainable forestry.</p>
+</div>
+<div class="partners-intro">
+<div class="partner-categories">
+<div class="partner-cat rv">
+<div class="partner-cat-head">
+<div class="partner-cat-icon" style="background:rgba(15,110,86,.1)">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+</div>
+<h3>Government of Laos</h3>
+</div>
+<p><strong>Department of Forestry (DoF)</strong> leads policy analysis and oversees forest resource management. <strong>Department of Labour Management (DoLM)</strong> is engaged in OH&S reform for the forest products sector.</p>
+</div>
+<div class="partner-cat rv">
+<div class="partner-cat-head">
+<div class="partner-cat-icon" style="background:rgba(186,117,23,.1)">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#BA7517" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+</div>
+<h3>Industry Associations</h3>
+</div>
+<p><strong>Lao Wood Processors Association</strong> for strategic research needs. <strong>Lao Furniture Association</strong> collaborates on market development and export pathways. <strong>Lao Chamber of Commerce</strong> supports MSME assessment.</p>
+</div>
+<div class="partner-cat rv">
+<div class="partner-cat-head">
+<div class="partner-cat-icon" style="background:rgba(83,74,183,.1)">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+</div>
+<h3>International Collaborators</h3>
+</div>
+<p><strong>KfW</strong> Village Forest Management. <strong>GIZ EU (ProFEB 3)</strong> circular economy cooperation. <strong>World Bank</strong> Lao Landscapes & Livelihoods Project. <strong>FAO</strong> forest governance. <strong>LPTP+</strong> teak value chains.</p>
+</div>
+</div>
+<div class="partner-logos">
+<div class="partner-logo-card rv">
+<h4>Griffith University</h4>
+<p>Commissioned Organisation — Project Lead</p>
+</div>
+<div class="partner-logo-card rv">
+<h4>National University of Laos</h4>
+<p>Central to all in country activities</p>
+</div>
+<div class="partner-logo-card rv">
+<h4>Australian National University</h4>
+<p>Forest policy, governance & value chain analysis</p>
+</div>
+<div class="partner-logo-card rv">
+<h4>University of Melbourne</h4>
+<p>Processing, EWP manufacturing & product testing</p>
+</div>
+<div class="partner-logo-card rv">
+<h4>DPI Queensland</h4>
+<p>EWP research & WTRC lab capacitation</p>
+</div>
+<div class="partner-logo-card rv">
+<h4>Department of Forestry</h4>
+<p>Principal Lao government agency for forest policy</p>
+</div>
+<div class="partner-logo-card rv">
+<h4>Salwood Asia Pacific</h4>
+<p>Market analysis & trend identification</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 
-<!-- PARTNERS -->
-<section class="section partners" id="partners">
-  <div class="container">
-    <div class="section-header center reveal">
-      <div class="section-label">Collaboration</div>
-      <h2 class="section-title">Partners & Sponsors</h2>
-      <p class="section-desc">A strong network of institutional partners driving research excellence and community impact.</p>
-    </div>
-    <div class="partner-grid reveal-stagger">
-      <div class="partner-card reveal" style="--i:0">
-        <div class="partner-flag">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <h3>Australian Partners</h3>
-        <p>Leading Australian research institutions and government agencies providing technical expertise, funding management, and scientific leadership.</p>
-        <div class="partner-orgs">
-          <span class="partner-org">ACIAR</span>
-          <span class="partner-org">University of Melbourne</span>
-          <span class="partner-org">CSIRO</span>
-          <span class="partner-org">DAF Queensland</span>
-          <span class="partner-org">ANU</span>
-        </div>
-      </div>
-      <div class="partner-card reveal" style="--i:1">
-        <div class="partner-flag">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/><path d="M9 10h.01M15 10h.01M9 14h.01M15 14h.01"/></svg>
-        </div>
-        <h3>Lao Partners</h3>
-        <p>National institutions and provincial government agencies contributing local expertise, field coordination, and policy integration.</p>
-        <div class="partner-orgs">
-          <span class="partner-org">National University of Laos</span>
-          <span class="partner-org">Dept. of Forestry</span>
-          <span class="partner-org">Provincial Offices</span>
-          <span class="partner-org">Forest Research Centre</span>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- ===== IMPACT ===== -->
+<section id="impact">
+<div class="container">
+<div style="text-align:center;max-width:700px;margin:0 auto">
+<div class="section-label rv" style="justify-content:center">Expected Impact</div>
+<div class="section-title rv" style="text-align:center">Transformative <span class="gold">Outcomes</span></div>
+<p class="section-desc rv" style="margin:0 auto">From economic growth and environmental sustainability to gender equity and institutional capacity building.</p>
+</div>
+<div class="impact-grid">
+<div class="impact-card rv" style="transition-delay:.05s">
+<img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" alt="Economic growth">
+<div class="impact-card-overlay">
+<div class="impact-card-icon">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d4a054" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+</div>
+<h3>Economic Growth</h3>
+<p>Expanded wood processing volumes, increased profitability, more employment, and greater national revenue for Laos.</p>
+</div>
+</div>
+<div class="impact-card rv" style="transition-delay:.1s">
+<img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&q=80" alt="Environmental sustainability">
+<div class="impact-card-overlay">
+<div class="impact-card-icon">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2"><path d="M12 22c-4-3-8-6-8-10a8 8 0 0 1 16 0c0 4-4 7-8 10z"/><circle cx="12" cy="12" r="3"/></svg>
+</div>
+<h3>Environmental</h3>
+<p>Expanded plantation area, increased carbon sequestration, and substitution of wood products for energy intensive materials.</p>
+</div>
+</div>
+<div class="impact-card rv" style="transition-delay:.15s">
+<img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="Social equity">
+<div class="impact-card-overlay">
+<div class="impact-card-icon">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D85A30" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+</div>
+<h3>Social Equity</h3>
+<p>Improved gender equity, better OH&S practices, and greater inclusion of ethnic minority women in research and employment.</p>
+</div>
+</div>
+<div class="impact-card rv" style="transition-delay:.2s">
+<img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600&q=80" alt="Institutional capacity">
+<div class="impact-card-overlay">
+<div class="impact-card-icon">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+</div>
+<h3>Institutional</h3>
+<p>A self sustaining WTRC at NUoL providing testing, certification and training services to Lao and regional forest industries long term.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
 
-<!-- IMPACT -->
-<section class="section impact" id="impact">
-  <div class="container">
-    <div class="section-header center reveal">
-      <div class="section-label">Expected Outcomes</div>
-      <h2 class="section-title">Projected Impact</h2>
-      <p class="section-desc">Tangible improvements in livelihoods, industry capability, and environmental sustainability.</p>
-    </div>
-    <div class="impact-grid reveal-stagger">
-      <div class="impact-card reveal" style="--i:0">
-        <div class="impact-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
-        <h3>Increased Farmer Income</h3>
-        <p>30% average income increase for participating smallholder families through improved timber quality and market access.</p>
-      </div>
-      <div class="impact-card reveal" style="--i:1">
-        <div class="impact-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3>Sustainable Forestry</h3>
-        <p>10,000+ hectares of plantation under improved management practices, reducing pressure on natural forests.</p>
-      </div>
-      <div class="impact-card reveal" style="--i:2">
-        <div class="impact-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-        </div>
-        <h3>Industry Growth</h3>
-        <p>40% improvement in processing efficiency at partner facilities, enabling higher-value product manufacturing.</p>
-      </div>
-      <div class="impact-card reveal" style="--i:3">
-        <div class="impact-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h3>Capacity Building</h3>
-        <p>1,000+ individuals trained in forestry skills, wood processing, and business management across three provinces.</p>
-      </div>
-      <div class="impact-card reveal" style="--i:4">
-        <div class="impact-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
-        </div>
-        <h3>Policy Influence</h3>
-        <p>15+ policy briefs and technical reports informing national forestry legislation and trade regulations.</p>
-      </div>
-      <div class="impact-card reveal" style="--i:5">
-        <div class="impact-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-        </div>
-        <h3>Gender Inclusion</h3>
-        <p>Targeted programs ensuring 40% female participation in training and leadership roles within forestry enterprises.</p>
-      </div>
-    </div>
-  </div>
+<!-- ===== GALLERY ===== -->
+<section id="gallery" class="section-dark">
+<div class="container">
+<div style="text-align:center;max-width:700px;margin:0 auto">
+<div class="section-label rv" style="justify-content:center">Photo Gallery</div>
+<div class="section-title rv" style="text-align:center">Project in <span class="gold">Pictures</span></div>
+</div>
+<div class="gallery-grid">
+<div class="gallery-item rv">
+<img src="https://images.unsplash.com/photo-1425913397330-cf8af2ff40a1?w=1200&q=80" alt="Lush forest landscape">
+<div class="gallery-item-overlay"><p>Lao PDR Plantation Forests</p></div>
+</div>
+<div class="gallery-item rv">
+<img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=600&q=80" alt="Wood processing">
+<div class="gallery-item-overlay"><p>Wood Processing Operations</p></div>
+</div>
+<div class="gallery-item rv">
+<img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80" alt="Timber logs">
+<div class="gallery-item-overlay"><p>Plantation Timber Resources</p></div>
+</div>
+<div class="gallery-item rv">
+<img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=600&q=80" alt="Pine trees">
+<div class="gallery-item-overlay"><p>Sustainable Forestry Practices</p></div>
+</div>
+<div class="gallery-item rv">
+<img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80" alt="Wood furniture">
+<div class="gallery-item-overlay"><p>Engineered Wood Products</p></div>
+</div>
+<div class="gallery-item rv">
+<img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Research laboratory">
+<div class="gallery-item-overlay"><p>Research & Testing Facilities</p></div>
+</div>
+</div>
+</div>
 </section>
 
-<!-- GALLERY -->
-<section class="section gallery" id="gallery">
-  <div class="container">
-    <div class="section-header center reveal">
-      <div class="section-label">Visual Stories</div>
-      <h2 class="section-title">Photo Gallery</h2>
-      <p class="section-desc">Scenes from our research sites, training programs, and community partnerships.</p>
-    </div>
-    <div class="gallery-grid reveal-stagger">
-      <div class="gallery-item reveal" style="--i:0">
-        <div class="gallery-item-inner">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/></svg>
-        </div>
-        <div class="gallery-caption">Teak plantation field trials, Vientiane Province</div>
-      </div>
-      <div class="gallery-item reveal" style="--i:1">
-        <div class="gallery-item-inner" style="background:linear-gradient(135deg,var(--brown-300),var(--brown-400))">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        </div>
-        <div class="gallery-caption">Wood processing workshop, Luang Prabang</div>
-      </div>
-      <div class="gallery-item reveal" style="--i:2">
-        <div class="gallery-item-inner" style="background:linear-gradient(135deg,var(--brown-100),var(--brown-300))">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <div class="gallery-caption">Farmer field school training session</div>
-      </div>
-      <div class="gallery-item reveal" style="--i:3">
-        <div class="gallery-item-inner" style="background:linear-gradient(135deg,var(--brown-200),var(--brown-400))">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div class="gallery-caption">Sustainable forest management assessment</div>
-      </div>
-      <div class="gallery-item reveal" style="--i:4">
-        <div class="gallery-item-inner" style="background:linear-gradient(135deg,var(--brown-300),var(--brown-500))">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-        </div>
-        <div class="gallery-caption">Solar kiln drying facility, Savannakhet</div>
-      </div>
-      <div class="gallery-item reveal" style="--i:5">
-        <div class="gallery-item-inner" style="background:linear-gradient(135deg,var(--brown-100),var(--brown-200))">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <div class="gallery-caption">International research exchange, Melbourne</div>
-      </div>
-    </div>
-  </div>
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="section-dark" style="background:linear-gradient(180deg,var(--brown-900),var(--brown-950))">
+<div class="container">
+<div style="text-align:center;max-width:700px;margin:0 auto;margin-bottom:50px">
+<div class="section-label rv" style="justify-content:center">Get In Touch</div>
+<div class="section-title rv" style="text-align:center">Contact <span class="gold">Us</span></div>
+<p class="section-desc rv" style="margin:0 auto">Interested in learning more about VALTIP4 or exploring partnership opportunities? We would love to hear from you.</p>
+</div>
+<div class="contact-wrap">
+<div class="contact-info">
+<div class="contact-card rv">
+<div class="contact-card-icon">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4a054" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+</div>
+<div><h4>Project Lead Institution</h4><p>Griffith University, Brisbane, Australia</p></div>
+</div>
+<div class="contact-card rv">
+<div class="contact-card-icon">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4a054" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+</div>
+<div><h4>Email</h4><p>valtip4@griffith.edu.au</p></div>
+</div>
+<div class="contact-card rv">
+<div class="contact-card-icon">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4a054" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</div>
+<div><h4>Partner Country</h4><p>Lao PDR &mdash; National University of Laos, Vientiane</p></div>
+</div>
+<div class="contact-card rv">
+<div class="contact-card-icon">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d4a054" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+</div>
+<div><h4>Funding Body</h4><p>ACIAR — Australian Centre for International Agricultural Research</p></div>
+</div>
+</div>
+<div class="contact-form rv">
+<h3>Send Us a Message</h3>
+<div class="form-row">
+<div class="form-group"><label>First Name</label><input type="text" placeholder="Your first name"></div>
+<div class="form-group"><label>Last Name</label><input type="text" placeholder="Your last name"></div>
+</div>
+<div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+<div class="form-group"><label>I am a...</label>
+<select><option value="">Select your role</option><option>Researcher / Academic</option><option>Student</option><option>Government Official</option><option>Industry Partner</option><option>Donor / Investor</option><option>Community Member</option><option>Media</option><option>Other</option></select>
+</div>
+<div class="form-group"><label>Message</label><textarea placeholder="Tell us how we can help..."></textarea></div>
+<button class="btn-submit">Send Message</button>
+</div>
+</div>
+</div>
 </section>
 
-<!-- CONTACT -->
-<section class="section contact" id="contact">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">Get in Touch</div>
-      <h2 class="section-title">Contact Us</h2>
-      <p class="section-desc">Interested in collaboration, partnership, or learning more about VALTIP4? We would love to hear from you.</p>
-    </div>
-    <div class="contact-grid">
-      <div class="contact-info reveal">
-        <div class="ci-item">
-          <div class="ci-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
-          </div>
-          <div>
-            <div class="ci-label">Email</div>
-            <div class="ci-value">valtip4@unimelb.edu.au</div>
-          </div>
-        </div>
-        <div class="ci-item">
-          <div class="ci-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <div>
-            <div class="ci-label">Main Office</div>
-            <div class="ci-value">Faculty of Science, University of Melbourne, Parkville VIC 3010, Australia</div>
-          </div>
-        </div>
-        <div class="ci-item">
-          <div class="ci-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </div>
-          <div>
-            <div class="ci-label">Phone</div>
-            <div class="ci-value">+61 3 9035 5281</div>
-          </div>
-        </div>
-        <div class="ci-item">
-          <div class="ci-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <div>
-            <div class="ci-label">Lao Office</div>
-            <div class="ci-value">National University of Laos, Faculty of Forest Sciences, Vientiane</div>
-          </div>
-        </div>
-      </div>
-      <form class="contact-form reveal" onsubmit="event.preventDefault();alert('Thank you! Your message has been sent.')">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" placeholder="Full name" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="you@example.com" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="org">Organization</label>
-          <input type="text" id="org" placeholder="Your organization or institution">
-        </div>
-        <div class="form-group">
-          <label for="subject">Subject</label>
-          <input type="text" id="subject" placeholder="What is this about?">
-        </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" placeholder="Tell us more..." rows="5" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-gold btn-lg" style="width:100%">Send Message</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
+<!-- ===== FOOTER ===== -->
 <footer class="footer">
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      <div class="footer-brand-icon">V4</div>
-      <span>VALTIP4</span>
-    </div>
-    <div class="footer-copy">&copy; 2025 VALTIP4 Project. Funded by the Australian Centre for International Agricultural Research (ACIAR).</div>
-    <div class="footer-links">
-      <a href="#overview">Overview</a>
-      <a href="#objectives">Objectives</a>
-      <a href="#team">Team</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<div class="nav-logo" style="margin-bottom:0">
+<div class="nav-logo-icon">V4</div>
+<div class="nav-logo-text">VALTIP<span>4</span></div>
+</div>
+<p>Sustainable Expansion of Forestry and Wood Processing in Laos and Australia. An ACIAR funded project (FST/2023/153) running from 2025 to 2030.</p>
+</div>
+<div class="footer-col">
+<h4>Quick Links</h4>
+<a href="#overview">Overview</a>
+<a href="#objectives">Objectives</a>
+<a href="#research">Research</a>
+<a href="#timeline">Timeline</a>
+</div>
+<div class="footer-col">
+<h4>About</h4>
+<a href="#team">Our Team</a>
+<a href="#partners">Partners</a>
+<a href="#impact">Impact</a>
+<a href="#gallery">Gallery</a>
+</div>
+<div class="footer-col">
+<h4>Connect</h4>
+<a href="#contact">Contact Us</a>
+<a href="#">ACIAR Website</a>
+<a href="#">Griffith University</a>
+<a href="#">NUoL</a>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2025 VALTIP4 Project. Funded by ACIAR. All rights reserved.</p>
+<div class="footer-socials">
+<a class="footer-social" href="#" aria-label="Twitter">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+</a>
+<a class="footer-social" href="#" aria-label="LinkedIn">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+</a>
+</div>
+</div>
+</div>
 </footer>
 
 <script>
-/* ========== NAV SCROLL ========== */
-const nav = document.getElementById('nav');
-let lastY = 0;
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-}, {passive: true});
+// ===== NAVBAR SCROLL =====
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)});
 
-/* ========== HAMBURGER ========== */
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
+// ===== MOBILE MENU =====
+function toggleMobile(){document.getElementById('mobileMenu').classList.toggle('active')}
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  mobileMenu.classList.toggle('open');
-  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-});
+// ===== INTERSECTION OBSERVER FOR REVEALS =====
+const observer=new IntersectionObserver((entries)=>{
+entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');observer.unobserve(e.target)}})
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv,.rv-left,.rv-right,.rv-scale').forEach(el=>observer.observe(el));
 
-function closeMenu() {
-  hamburger.classList.remove('active');
-  mobileMenu.classList.remove('open');
-  document.body.style.overflow = '';
+// ===== COUNT UP ANIMATION =====
+const countObserver=new IntersectionObserver((entries)=>{
+entries.forEach(e=>{
+if(e.isIntersecting){
+const el=e.target;
+const target=parseInt(el.dataset.target);
+const suffix=el.dataset.suffix||'';
+let current=0;
+const step=Math.max(1,Math.floor(target/40));
+const timer=setInterval(()=>{
+current+=step;
+if(current>=target){current=target;clearInterval(timer)}
+el.textContent=current+suffix;
+},30);
+countObserver.unobserve(el);
 }
+})
+},{threshold:.5});
+document.querySelectorAll('.count-up').forEach(el=>countObserver.observe(el));
 
-/* ========== SCROLL REVEAL ========== */
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, {
-  threshold: 0.15,
-  rootMargin: '0px 0px -40px 0px'
+// ===== HERO PARTICLES =====
+(function(){
+const c=document.getElementById('particles');
+for(let i=0;i<20;i++){
+const p=document.createElement('div');
+p.className='hero-particle';
+p.style.left=Math.random()*100+'%';
+p.style.animationDelay=Math.random()*15+'s';
+p.style.animationDuration=(12+Math.random()*10)+'s';
+p.style.width=p.style.height=(2+Math.random()*4)+'px';
+c.appendChild(p);
+}
+})();
+
+// ===== SMOOTH SCROLL =====
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+a.addEventListener('click',e=>{
+const t=document.querySelector(a.getAttribute('href'));
+if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
 });
-
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-/* ========== SMOOTH SCROLL FOR ANCHOR LINKS ========== */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      const offset = nav.offsetHeight + 16;
-      const y = target.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({top: y, behavior: 'smooth'});
-    }
-  });
 });
 </script>
 </body>
